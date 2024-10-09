@@ -1,3 +1,4 @@
+// import cors from 'cors';
 const cors = require('cors');
 import express from 'express';
 // import initRoutes from "./src/routes"
@@ -12,6 +13,7 @@ const corsOptions = {
     origin: 'http://localhost:3000',
     credentials: true,
 };
+
 app.use(cors(corsOptions));
 // initRoutes(app)
 if (!module.parent) {
