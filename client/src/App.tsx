@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import Home from './pages/home'
-import Ticket from './pages/ticket'
+import Home from './get-ticket/components/home'
+import Ticket from './get-ticket/components/ticket'
 
 function App() {
   const [count, setCount] = useState(0)
