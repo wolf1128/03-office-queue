@@ -50,7 +50,7 @@ This API creates a new ticket for the specified service.
 - **Method**: POST
 - **URL**: `/api/tickets`
 - **Body Parameters**:
-    - **serviceName** (string): The name of the service for which the ticket is being requested
+    - **serviceID** (number): The ID of the service for which the ticket is being requested
 
 #### Example Request:
 ```json
