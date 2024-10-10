@@ -12,7 +12,7 @@ This API retrieves the list of available services for which a customer can reque
 
 ### Request:
 - **Method**: GET
-- **URL**: `/api/service`
+- **URL**: `/api/services`
 - **Parameters**: None
 
 ### Response:

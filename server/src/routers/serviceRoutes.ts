@@ -1,21 +1,26 @@
 import express, { Router } from "express";
-
+import ServiceController from "../controllers/serviceController";
+import { body, param } from "express-validator"
+import ErrorHandler from "../helper";
+import Service from "../components/service";
 
 /*
  * Represents a class that defines the routes for handling proposals.
  */
 class ServiceRoutes {
-//   private controller: ServiceController;
   private router: Router;
+  private errorHandler: ErrorHandler;
+  private controller: ServiceController;
 
 
   /*
    * Constructs a new instance of the ProductRoutes class.
    */
   constructor() {
-    // this.controller = new ServiceController();
     this.router = express.Router();
-
+    
+    this.errorHandler= new ErrorHandler;
+    this.controller = new ServiceController;
     this.initRoutes();
   }
 
@@ -40,15 +45,15 @@ class ServiceRoutes {
      * Route for retrieving all services.
      * It returns an array of Service objects.
      */
-    // this.router.get("/", (req: any, res: any, next: any) =>
-    //   this.controller
-    //     .getServicess()
-    //     .then((services: Service[]) => res.status(200).json(services))
-    //     .catch((err) => {
-    //       console.log(err);
-    //       next(err);
-    //     })
-    // );
+    this.router.get("/", (req: any, res: any, next: any) =>
+      this.controller
+        .getServices()
+        .then((services: any[]) => res.status(200).json(services))
+        .catch((err) => {
+          console.log(err);
+          next(err);
+        })
+    );
   }
 }
 
