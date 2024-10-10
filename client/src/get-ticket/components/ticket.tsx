@@ -51,7 +51,7 @@ function Ticket() {
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
                 >
-                <Button className='info-button'>
+                <Button className='info-btn'>
                     <IoIosInformationCircleOutline size={28}/>
                 </Button>
             </OverlayTrigger>

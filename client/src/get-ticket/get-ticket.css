@@ -5,14 +5,15 @@
     top: 10px;
     left: 10px;
 }
+
 .btn-outline {
-    color: #103783; /* Cambia il colore del testo a blu scuro */
-    border-color: #103783; /* Cambia il bordo a blu scuro */
+    color: #103783;
+    border-color: #103783;
 }
 
 .btn-outline:hover {
-    background-color: #103783; /* Cambia lo sfondo a blu scuro durante il hover */
-    color: white; /* Cambia il colore del testo a bianco durante il hover */
+    background-color: #103783;
+    color: white;
 }
 
 
@@ -23,13 +24,13 @@
     right: 10px;
 }
 
-.info-button {
+.info-btn {
     color: #103783;
     border-color: white; 
     background-color: white;
 }
 
-.info-button:hover {
+.info-btn:hover {
     border-color: white; 
 }
 
@@ -162,4 +163,59 @@
     font-size: 30px;
     font-weight: bold;
     color: #103783;
+}
+
+/* Button Container */
+.button-container {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.service-btn {
+    width: 200px;
+    height: 130px;
+    margin: 5px;
+    background-color: orange;
+    color: white;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.service-btn-01 {
+    border-radius: 15% 0% 0% 0% ;
+}
+.service-btn-02 {
+    border-radius: 0% 15% 0% 0% ;
+}
+.service-btn-03 {
+    border-radius: 0% 0% 15% 0% ;
+}
+.service-btn-04 {
+    border-radius: 0% 0% 0% 15% ;
+}
+
+/* Help button*/
+.help-box {
+    margin-top: 50px;        
+}
+
+.help-btn {
+    color: white;
+    background-color: #103783;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-outline:hover {
+    background-color: #103783;
+    color: white;
 }
