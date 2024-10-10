@@ -21,16 +21,20 @@ This API retrieves the list of available services for which a customer can reque
 ```json
 [
   {
-    "serviceName": "Service A"
+    "serviceName": "Service A",
+    "serviceID": 1
   },
   {
-    "serviceName": "Service B"
+    "serviceName": "Service B",
+    "serviceID": 2
   },
   {
-    "serviceName": "Service C"
+    "serviceName": "Service C",
+    "serviceID": 3
   },
   {
-    "ServiceName": "Service D"
+    "ServiceName": "Service D",
+    "serviceID": 4
   }
 ]
 ```
@@ -51,7 +55,7 @@ This API creates a new ticket for the specified service.
 #### Example Request:
 ```json
 {
-  "serviceName": "Service A"
+  "serviceID": 1
 }
 ```
 
@@ -61,11 +65,11 @@ This API creates a new ticket for the specified service.
 ```json
 {
   "ticket": {
-    "ticketNumber": 12345,
-    "issueTime": "2024-10-10T10:00:00Z",
+    "ticketID": 12345,
+    "issuedTime": "2024-10-10T10:00:00Z",
     "status": "Pending",
     "waitingTime": "15 minutes",
-    "serviceType": "Service A"
+    "serviceID": "Service A"
   }
 }
 ```
