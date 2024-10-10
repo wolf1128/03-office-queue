@@ -1,17 +1,14 @@
 import express, { Router } from "express";
 
 
-/
- * Represents a class that defines the routes for handling proposals.
- */
+/* Represents a class that defines the routes for handling proposals.*/
 class ServiceRoutes {
 //   private controller: ServiceController;
   private router: Router;
 
 
-  /
-   * Constructs a new instance of the ProductRoutes class.
-   */
+  /* Constructs a new instance of the ProductRoutes class.*/
+
   constructor() {
     // this.controller = new ServiceController();
     this.router = express.Router();
@@ -19,22 +16,13 @@ class ServiceRoutes {
     this.initRoutes();
   }
 
-  /
-   * Returns the router instance.
-   * @returns The router instance.
-   */
+  /* Returns the router instance.* @returns The router instance.*/
+  
   getRouter(): Router {
     return this.router;
   }
 
-  /
-   * Initializes the routes for the product router.
-   *
-   * @remarks
-   * This method sets up the HTTP routes for handling product-related operations such as registering products, registering arrivals, selling products, retrieving products, and deleting products.
-   * It can (and should!) apply authentication, authorization, and validation middlewares to protect the routes.
-   *
-   */
+  /* Initializes the routes for the product router.** @remarks* This method sets up the HTTP routes for handling product-related operations such as registering products, registering arrivals, selling products, retrieving products, and deleting products. * It can (and should!) apply authentication, authorization, and validation middlewares to protect the routes.* */
   initRoutes() {
     /**
      * Route for retrieving all services.

@@ -1,17 +1,13 @@
 import express, { Router } from "express";
 
 
-/
- * Represents a class that defines the routes for handling users.
- */
+/* Represents a class that defines the routes for handling users.*/
 class TicketRoutes {
   private router: Router;
   
   //   private controller: TicketController;
 
-  /
-   * Constructs a new instance of the TicketRoutes class.
-   */
+  /* Constructs a new instance of the TicketRoutes class.*/
   constructor() {
     this.router = express.Router();
 
@@ -19,21 +15,14 @@ class TicketRoutes {
     this.initRoutes();
   }
 
-  /
-   * Get the router instance.
-   * @returns The router instance.
-   */
+  /* Get the router instance.* @returns The router instance.*/
+
   getRouter(): Router {
     return this.router;
   }
 
-  /
-   * Initializes the routes for the user router.
-   *
-   * @remarks
-   * This method sets up the HTTP routes for creating, retrieving, updating, and deleting user data.
-   * It can (and should!) apply authentication, authorization, and validation middlewares to protect the routes.
-   */
+  /* Initializes the routes for the user router.** @remarks* This method sets up the HTTP routes for creating, retrieving, updating, and deleting user data.* It can (and should!) apply authentication, authorization, and validation middlewares to protect the routes.*/
+
   initRoutes() {
     /**
      * Route for creating a ticket.

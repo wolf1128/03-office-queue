@@ -1,3 +1,80 @@
 # Office Queue Management Full API Specifications
 
-This document lists all the expected behaviors for the APIs that compose the Office Queue Management application.
+This document lists all the expected behaviors for the APIs for get-ticket that compose the Office Queue Management application.
+
+
+# GET TICKET API Documentation
+
+## 1. GET /api/service
+
+### Description:
+This API retrieves the list of available services for which a customer can request a ticket.
+
+### Request:
+- **Method**: GET
+- **URL**: `/api/service`
+- **Parameters**: None
+
+### Response:
+- **Status**: 200 OK
+- **Body** (JSON):
+```json
+[
+  {
+    "serviceName": "Service A"
+  },
+  {
+    "serviceName": "Service B"
+  },
+  {
+    "serviceName": "Service C"
+  },
+  {
+    "ServiceName": "Service D"
+  }
+]
+```
+
+---
+
+## 2. POST /api/tickets
+
+### Description:
+This API creates a new ticket for the specified service.
+
+### Request:
+- **Method**: POST
+- **URL**: `/api/tickets`
+- **Body Parameters**:
+    - **serviceName** (string): The name of the service for which the ticket is being requested
+
+#### Example Request:
+```json
+{
+  "serviceName": "Service A"
+}
+```
+
+### Response:
+- **Status**: 201 Created
+- **Body** (JSON):
+```json
+{
+  "ticket": {
+    "ticketNumber": 12345,
+    "issueTime": "2024-10-10T10:00:00Z",
+    "status": "Pending",
+    "waitingTime": "15 minutes",
+    "serviceType": "Service A"
+  }
+}
+```
+
+---
+
+## Error Responses:
+
+- **400 Bad Request**: If required parameters are missing or invalid.
+- **500 Internal Server Error**: If there is an issue processing the request.
+
+---
