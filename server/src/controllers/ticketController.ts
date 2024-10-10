@@ -5,8 +5,8 @@ import TicketDAO from "../dao/ticketDAO"
 class TicketController {
     private ticketDAO: TicketDAO;
 
-    constructor(ticketDAO: TicketDAO) {
-        this.ticketDAO = ticketDAO;
+    constructor() {
+        this.ticketDAO = new TicketDAO;
     }
 
     async getTicket(service: number): Promise<Ticket | null> {
@@ -14,3 +14,5 @@ class TicketController {
     }
     
 }
+
+export default TicketController;

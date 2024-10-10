@@ -1,25 +1,28 @@
 import express, { Router } from "express";
+import TicketController from "../controllers/ticketController";
+import { body, param } from "express-validator"
+import ErrorHandler from "../helper";
 
-
-/
+/*
  * Represents a class that defines the routes for handling users.
  */
 class TicketRoutes {
   private router: Router;
-  
-  //   private controller: TicketController;
+  private errorHandler: ErrorHandler;
+  private controller: TicketController;
 
-  /
+  /*
    * Constructs a new instance of the TicketRoutes class.
    */
   constructor() {
     this.router = express.Router();
 
-    // this.controller = new TicketController();
+    this.errorHandler=new ErrorHandler;
+    this.controller = new TicketController;
     this.initRoutes();
   }
 
-  /
+  /*
    * Get the router instance.
    * @returns The router instance.
    */
@@ -27,7 +30,7 @@ class TicketRoutes {
     return this.router;
   }
 
-  /
+  /*
    * Initializes the routes for the user router.
    *
    * @remarks
@@ -39,18 +42,18 @@ class TicketRoutes {
      * Route for creating a ticket.
      * It returns a 200 status code.
      */
-    // this.router.post(
-    //   "/",
-    //   body("serviceName").notEmpty().isString(),
-    //   this.errorHandler.validateRequest,
-    //   (req: any, res: any, next: any) =>
-    //     this.controller
-    //       .createTicket(req.body.serviceID)
-    //       .then(() => res.status(200).end())
-    //       .catch((err) => {
-    //         next(err);
-    //       })
-    // );
+    this.router.post(
+      "/",
+      body("serviceName").notEmpty().isInt(),
+      this.errorHandler.validateRequest,
+      (req: any, res: any, next: any) =>
+        this.controller
+          .getTicket(req.body.serviceID)
+          .then(() => res.status(200).end())
+          .catch((err) => {
+            next(err);
+          })
+    );
   }
 }
 

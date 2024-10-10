@@ -1,6 +1,6 @@
 const cors = require('cors');
 import express from 'express';
-// import initRoutes from "./src/routes"
+import initRoutes from "./src/routes"
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -13,7 +13,7 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
-// initRoutes(app)
+initRoutes(app)
 if (!module.parent) {
     app.listen(port, () => {
         console.log(`Server listening at http://localhost:${port}`);

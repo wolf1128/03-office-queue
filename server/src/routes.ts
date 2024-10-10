@@ -6,7 +6,7 @@ import TicketRoutes from "./routers/ticketRoutes"
 const morgan = require("morgan")
 const prefix = "/api"
 
-/
+/*
  * Initializes the routes for the application.
  * 
  * @remarks
@@ -23,11 +23,11 @@ function initRoutes(app: express.Application) {
     const serviceRoutes = new ServiceRoutes()
     const ticketRoutes = new TicketRoutes()
 
-    /
+    /*
      * The routes for the Service, Ticket
      */
-    app.use(${prefix}/services, serviceRoutes.getRouter())
-    app.use(${prefix}/tickets, ticketRoutes.getRouter())
+    app.use(`${prefix}/services`, serviceRoutes.getRouter())
+    app.use(`${prefix}/tickets`, ticketRoutes.getRouter())
 
     ErrorHandler.registerErrorHandler(app)
 }

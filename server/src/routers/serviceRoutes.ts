@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 
 
-/
+/*
  * Represents a class that defines the routes for handling proposals.
  */
 class ServiceRoutes {
@@ -9,7 +9,7 @@ class ServiceRoutes {
   private router: Router;
 
 
-  /
+  /*
    * Constructs a new instance of the ProductRoutes class.
    */
   constructor() {
@@ -19,7 +19,7 @@ class ServiceRoutes {
     this.initRoutes();
   }
 
-  /
+  /*
    * Returns the router instance.
    * @returns The router instance.
    */
@@ -27,7 +27,7 @@ class ServiceRoutes {
     return this.router;
   }
 
-  /
+  /*
    * Initializes the routes for the product router.
    *
    * @remarks
