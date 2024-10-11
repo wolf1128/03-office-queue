@@ -1,12 +1,12 @@
 class Service {
-    ServiceID: number
-    ServiceName: string
-    ServiceTime: number
+    serviceID: number
+    serviceName: string
+    serviceTime: number
 
     constructor(ServiceID: number, ServiceName: string, ServiceTime: number) {
-        this.ServiceID = ServiceID;
-        this.ServiceName = ServiceName;
-        this.ServiceTime = ServiceTime;
+        this.serviceID = ServiceID;
+        this.serviceName = ServiceName;
+        this.serviceTime = ServiceTime;
     }
 }
 

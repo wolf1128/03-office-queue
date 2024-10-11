@@ -18,8 +18,8 @@ class TicketRoutes {
   constructor() {
     this.router = express.Router();
 
-    this.errorHandler = new ErrorHandler;
-    this.controller = new TicketController;
+    this.errorHandler = new ErrorHandler();
+    this.controller = new TicketController();
     this.initRoutes();
   }
 

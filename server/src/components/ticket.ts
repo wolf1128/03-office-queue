@@ -1,16 +1,16 @@
 class Ticket {
-    TicketID: number
-    ServiceID: number
-    IssuedTime: string
-    EstimatedTime: number
-    Status: string
+    ticketID: number
+    serviceID: number
+    issuedTime: string
+    estimatedTime: number
+    status: string
 
     constructor(TicketID: number, ServiceID: number, IssuedTime: string, EstimatedTime: number, Status: string) {
-        this.TicketID = TicketID;
-        this.ServiceID = ServiceID;
-        this.IssuedTime = IssuedTime;
-        this.EstimatedTime = EstimatedTime;
-        this.Status = Status;
+        this.ticketID = TicketID;
+        this.serviceID = ServiceID;
+        this.issuedTime = IssuedTime;
+        this.estimatedTime = EstimatedTime;
+        this.status = Status;
     }
 }
 

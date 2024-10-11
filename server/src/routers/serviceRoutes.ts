@@ -19,8 +19,8 @@ class ServiceRoutes {
   constructor() {
     this.router = express.Router();
 
-    this.errorHandler = new ErrorHandler;
-    this.controller = new ServiceController;
+    this.errorHandler = new ErrorHandler();
+    this.controller = new ServiceController();
     this.initRoutes();
   }
 

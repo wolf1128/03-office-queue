@@ -6,7 +6,7 @@ class TicketController {
     private ticketDAO: TicketDAO;
 
     constructor() {
-        this.ticketDAO = new TicketDAO;
+        this.ticketDAO = new TicketDAO();
     }
 
     async getTicket(service: number): Promise<Ticket | null> {

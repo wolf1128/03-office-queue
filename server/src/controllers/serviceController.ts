@@ -6,7 +6,7 @@ class ServiceController {
     private serviceDAO: ServiceDAO;
 
     constructor() {
-        this.serviceDAO = new ServiceDAO;
+        this.serviceDAO = new ServiceDAO();
     }
 
     async getServices(): Promise<any[] | null> {

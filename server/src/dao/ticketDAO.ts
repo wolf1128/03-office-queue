@@ -19,22 +19,21 @@ class TicketDAO {
                 const ticketID_query = "SELECT MAX(TicketID) AS pastTicket FROM Ticket";
                 const insertQueue_query = "INSERT INTO Ticket VALUES(?,?,?,null,'in queue')";
 
-                const date = new Date
+                const date = new Date()
                 const year = date.getFullYear();
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 const day = String(date.getDate()).padStart(2, '0');
                 const formattedDate = `${year}-${month}-${day}`;
 
-                let newTicket: Ticket = { TicketID: 1, ServiceID: service, IssuedTime: formattedDate, EstimatedTime: 0, Status: "in queue" }
+                let newTicket: Ticket = new Ticket(1, service, formattedDate, 0, "in queue")
 
                 db.get(ticketID_query, (err: Error | null, row: any) => {
                     if (err) return reject(err);
-                    if (row.count < 1) return reject(new Error());
-                    if (row != null)
-                        newTicket.TicketID = row.pastTicket + 1
 
-                    console.log(newTicket)
-                    db.run(insertQueue_query, [newTicket.TicketID, newTicket.ServiceID, newTicket.IssuedTime], (err: Error | null) => {
+                    if (row.pastTicket != null)
+                        newTicket.ticketID = row.pastTicket + 1
+                    
+                    db.run(insertQueue_query, [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime], (err: Error | null) => {
                         if (err) return reject(err);
                         return resolve(newTicket);
                     });
