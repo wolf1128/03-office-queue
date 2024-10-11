@@ -15,13 +15,12 @@ class ServiceDAO {
             try {
                 const ticketID_query = "SELECT ServiceID, ServiceName FROM Service";
 
-                db.get(ticketID_query, (err: Error | null, rows: any) => {
+                db.all(ticketID_query, (err: Error | null, rows: any) => {
                     if (err) return reject(err);
                     if (rows.count < 1) return reject(new Error());
-                    const services: any[] = rows.map(
-                        (row: {ServiceID:number,ServiceName:string}) =>
-                            {row.ServiceID, row.ServiceName})
-                    resolve(services)
+                    //const services: any[] = rows.map(
+                    //    (row: { ServiceID: number, ServiceName: string }) => { row.ServiceID, row.ServiceName })
+                    resolve(rows)
                 });
 
             } catch (error) {

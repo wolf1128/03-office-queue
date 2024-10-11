@@ -12,7 +12,7 @@ class ServiceController {
     async getServices(): Promise<any[] | null> {
         return this.serviceDAO.getServices();
     }
-    
+
 }
 
 export default ServiceController;

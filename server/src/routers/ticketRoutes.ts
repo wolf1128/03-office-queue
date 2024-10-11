@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import TicketController from "../controllers/ticketController";
 import { body, param } from "express-validator"
 import ErrorHandler from "../helper";
+import Ticket from "../components/ticket";
 
 /*
  * Represents a class that defines the routes for handling users.
@@ -17,7 +18,7 @@ class TicketRoutes {
   constructor() {
     this.router = express.Router();
 
-    this.errorHandler=new ErrorHandler;
+    this.errorHandler = new ErrorHandler;
     this.controller = new TicketController;
     this.initRoutes();
   }
@@ -44,12 +45,12 @@ class TicketRoutes {
      */
     this.router.post(
       "/",
-      body("serviceName").notEmpty().isInt(),
+      body("ServiceID").notEmpty().isInt(),
       this.errorHandler.validateRequest,
       (req: any, res: any, next: any) =>
         this.controller
-          .getTicket(req.body.serviceID)
-          .then(() => res.status(200).end())
+          .getTicket(req.body.ServiceID)
+          .then((ticket: Ticket) => res.status(201).json(ticket))
           .catch((err) => {
             next(err);
           })

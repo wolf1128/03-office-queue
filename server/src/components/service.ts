@@ -5,8 +5,8 @@ class Service {
 
     constructor(ServiceID: number, ServiceName: string, ServiceTime: number) {
         this.ServiceID = ServiceID;
-        this.ServiceName=ServiceName;
-        this.ServiceTime=ServiceTime;
+        this.ServiceName = ServiceName;
+        this.ServiceTime = ServiceTime;
     }
 }
 

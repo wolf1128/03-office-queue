@@ -1,11 +1,11 @@
 class Ticket {
     TicketID: number
     ServiceID: number
-    IssuedTime: Date
+    IssuedTime: string
     EstimatedTime: number
     Status: string
 
-    constructor(TicketID: number, ServiceID: number, IssuedTime: Date, EstimatedTime: number, Status: string) {
+    constructor(TicketID: number, ServiceID: number, IssuedTime: string, EstimatedTime: number, Status: string) {
         this.TicketID = TicketID;
         this.ServiceID = ServiceID;
         this.IssuedTime = IssuedTime;

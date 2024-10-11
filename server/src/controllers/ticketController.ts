@@ -12,7 +12,7 @@ class TicketController {
     async getTicket(service: number): Promise<Ticket | null> {
         return this.ticketDAO.getTicket(service);
     }
-    
+
 }
 
 export default TicketController;
