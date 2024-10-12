@@ -13,15 +13,14 @@ import ServiceController from "../../src/controllers/serviceController";
 import Service from "../../src/components/service";
 const baseURL = "/api";
 
-//For unit tests, we need to validate the internal logic of a single component, without the need to test the interaction with other components
-//For this purpose, we mock (simulate) the dependencies of the component we are testing
+// For unit tests, we need to validate the internal logic of a single component, without the need to test the interaction with other components
 jest.mock("../../src/controllers/serviceController");
 
 let testService = new Service(1, "Shipping", 10);
 
 describe("ServiceRoute unit tests", () => {
   describe("GET /api/services", () => {
-    test("It returns an array of users", async () => {
+    test("It returns an array of services", async () => {
       jest
         .spyOn(ServiceController.prototype, "getServices")
         .mockResolvedValueOnce([testService]);

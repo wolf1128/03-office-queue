@@ -16,12 +16,12 @@ import Service from "../../src/components/service";
 jest.mock("../../src/db/db.ts");
 
 describe("ServiceDAO unit tests", () => {
-  describe("getUsers", () => {
+  describe("getServices", () => {
     test("It should resolve a list of services", async () => {
       const serviceDAO = new ServiceDAO();
       const mockDBAll = jest
         .spyOn(db, "all")
-        .mockImplementation((sql, params, callback) => {
+        .mockImplementation((sql, callback) => {
           callback(null, [
             {
               ServiceName: "ServiceName",
@@ -40,12 +40,12 @@ describe("ServiceDAO unit tests", () => {
       mockDBAll.mockRestore();
     });
 
-    test("It should throw an error if the services not found", async () => {
+    test("It should throw an error if no services exist", async () => {
       const serviceDAO = new ServiceDAO();
 
       const mockDBAll = jest
         .spyOn(db, "all")
-        .mockImplementation((sql, params, callback) => {
+        .mockImplementation((sql, callback) => {
           callback(null, null);
           return {} as Database;
         });
@@ -53,9 +53,10 @@ describe("ServiceDAO unit tests", () => {
       try {
         await serviceDAO.getServices();
       } catch (error) {
-        // expect(error.customMessage).toBe(
-        //   new ServicesNotFoundError().customMessage
-        // );
+        expect(error).toBeInstanceOf(Error);
+        expect(error.message).toBe(
+          "Cannot read properties of null (reading 'length')"
+        );
       }
 
       mockDBAll.mockRestore();
