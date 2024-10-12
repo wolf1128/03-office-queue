@@ -17,15 +17,25 @@ function DefaultRoute() {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [services, SetServices] = useState([]);
+  /*
+  flag used to call the api
+  dirty = 1 -> call api
+  dirty = 0 -> wait
+  */
+  const [dirty, setDirty] = useState(true);
+
+  //call the server every 10 sec
+  setTimeout(()=>setDirty(true), 10000);
 
   return (
     <BrowserRouter>
       <Container>
         <CustomNavbar/>
           <Routes>
-            <Route path='/' element={ <Home/> } />
-            <Route path='/ticket' element={<Ticket/>} /> 
+            <Route path='/' element={ <Home services={services} setServices={SetServices} dirty={dirty} setDirty={setDirty}/> } />
+            <Route path='/ticket/:ticketID' element={<Ticket dirty={dirty} setDirty={setDirty}/>} /> 
             {/*<Route index element={ <Home/> } />*/}
             {/*<Route path='/pages/:pageId' element={ <DetailLayout user={user} pages={pages} setPages={setPages}  blocks={blocks} setBlocks={setBlocks} setDirty={setDirty} />} />*/}
             <Route path='/*' element={<DefaultRoute />} />

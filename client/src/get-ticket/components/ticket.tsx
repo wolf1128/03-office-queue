@@ -3,7 +3,7 @@ import myIcon from '../../assets/Down_Arrow.svg';
 import '../get-ticket.css';
 
 
-function Ticket() {
+function Ticket(props: any) {
 
     const [ticketNo, setTicketNo] = useState(110);
     const [waitingTime, setWaitingTime] = useState(0);
