@@ -50,7 +50,6 @@ class ServiceRoutes {
         .getServices()
         .then((services: any[]) => res.status(200).json(services))
         .catch((err) => {
-          console.log(err);
           next(err);
         })
     );

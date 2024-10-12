@@ -17,7 +17,7 @@ class ServiceDAO {
 
                 db.all(ticketID_query, (err: Error | null, rows: any) => {
                     if (err) return reject(err);
-                    console.log(rows)
+
                     if (rows.length<1) return reject(new Error());
                     else resolve(rows)
                 });
