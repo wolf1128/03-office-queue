@@ -1,12 +1,20 @@
+/* NAVBAR */
 
-/* Back Button */
-.back-button {
+.navbar {
+    width: 100%;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0px;
+    left:0px;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .btn-outline {
+    margin-left: 20px;
     color: #103783;
     border-color: #103783;
 }
@@ -14,24 +22,18 @@
 .btn-outline:hover {
     background-color: #103783;
     color: white;
-}
-
-
-/* Info Button */
-.info {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    border-color: #103783;
 }
 
 .info-btn {
+    margin-right: 20px;
     color: #103783;
     border-color: white; 
     background-color: white;
 }
 
 .info-btn:hover {
-    border-color: white; 
+    border-color: #103783; 
 }
 
 .info-text {
@@ -45,23 +47,18 @@
 .post-office {
     display: flex;
     align-items: center;
-    padding: 10px;
-    width: 500px;
 }
 
 .post-office-icon {
     margin-right: 20px;
     color: #2b2b2b;
-    width: 25%; 
     text-align: right;
-       
 }
 
 .post-office-title {
-    text-align: center;
+    text-align: left;
     font-size: 36px;
     color: #2b2b2b;
-    width: 70%;
     text-align: left;
 }
 
@@ -72,6 +69,7 @@
     color: #103783;
     font-size: 40px;
     margin-bottom: 10px;
+    margin-top: 50px;
     
 }
 
@@ -167,8 +165,6 @@
 
 /* Button Container */
 .button-container {
-    width: 500px;
-    height: 300px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -182,25 +178,19 @@
     margin: 5px;
     background-color: orange;
     color: white;
-    border: none;
-    font-size: 16px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
+    border-radius: 20px;
 }
 
-.service-btn-01 {
-    border-radius: 15% 0% 0% 0% ;
-}
-.service-btn-02 {
-    border-radius: 0% 15% 0% 0% ;
-}
-.service-btn-03 {
-    border-radius: 0% 0% 15% 0% ;
-}
-.service-btn-04 {
-    border-radius: 0% 0% 0% 15% ;
+.service-btn:hover {
+    border-color: #103783;
+    font-size: 24px;
+    color: #103783;
+    font-weight: boold;
 }
 
 /* Help button*/
@@ -215,7 +205,9 @@
     justify-content: center;
 }
 
-.btn-outline:hover {
-    background-color: #103783;
-    color: white;
+.help-btn:hover {
+    background-color: white;
+    color: #103783;
+    border-color: #103783;
 }
+
