@@ -50,7 +50,7 @@ async function getAllServices() {
 /*
 This API creates a new ticket for the specified service.
 */
-function createTicket(serviceID: any) {
+function createTicket(serviceID: number) {
     return getJson(
       fetch(baseURL + "api/tickets/", {
         method: 'POST',
@@ -58,7 +58,7 @@ function createTicket(serviceID: any) {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify(serviceID) 
+        body: JSON.stringify({'ServiceID': serviceID}) 
       })
     )
   }

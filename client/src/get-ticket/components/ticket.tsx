@@ -1,14 +1,29 @@
-import { useState, useRef } from 'react'
+import { useEffect } from 'react'
 import myIcon from '../../assets/Down_Arrow.svg';
 import '../get-ticket.css';
+import API from '../../API/API.tsx';
 
 
 function Ticket(props: any) {
 
-    const [ticketNo, setTicketNo] = useState(110);
-    const [waitingTime, setWaitingTime] = useState(0);
-    const [serviceType, setServiceType] = useState("Service1");
-    const [show, setShow] = useState(false);
+    // get all services only the fistr time you enter the page
+    useEffect(() => {
+        API.getAllServices()
+            .then(services => {
+                props.setServices(services);
+            })
+            .catch(error => {
+                console.error("Error fetching services:", error);
+            });
+    }, []);
+
+    const AllServices = props.services;
+
+    // get serviceName from serviceID
+    const myService = AllServices.find( (service: any) => (
+            service.ServiceID === props.ticket.serviceID
+        )
+    );
 
     return (
         <>            
@@ -26,7 +41,7 @@ function Ticket(props: any) {
                 </span>
                 <br/>
                 <span className='ticket-number'>
-                    {ticketNo}
+                    {props.ticket.ticketID}
                 </span>
                 
             </div>
@@ -35,11 +50,11 @@ function Ticket(props: any) {
             <div className='information-box'>
                 <div className='waiting-time'>
                     Waiting Time
-                    <div className='waiting-time-number'>{waitingTime}</div>
+                    <div className='waiting-time-number'>{props.ticket.estimatedTime}</div>
                 </div>
                 <div className='service-type'>
                     Service Type
-                    <div className='service-type-number'>{serviceType}</div>
+                    <div className='service-type-number'>{myService.ServiceName}</div>
                 </div>
             </div>
 

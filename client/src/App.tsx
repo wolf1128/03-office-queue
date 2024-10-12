@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import './App.css'
 import Home from './get-ticket/components/home'
@@ -18,7 +18,8 @@ function DefaultRoute() {
 
 function App() {
 
-  const [services, SetServices] = useState([]);
+  const [services, setServices] = useState([]);
+  const [ticket, setTicket] = useState([]);
   /*
   flag used to call the api
   dirty = 1 -> call api
@@ -27,17 +28,15 @@ function App() {
   const [dirty, setDirty] = useState(true);
 
   //call the server every 10 sec
-  setTimeout(()=>setDirty(true), 10000);
+  setTimeout(()=>setDirty(true), 15000);
 
   return (
     <BrowserRouter>
       <Container>
         <CustomNavbar/>
           <Routes>
-            <Route path='/' element={ <Home services={services} setServices={SetServices} dirty={dirty} setDirty={setDirty}/> } />
-            <Route path='/ticket/:ticketID' element={<Ticket dirty={dirty} setDirty={setDirty}/>} /> 
-            {/*<Route index element={ <Home/> } />*/}
-            {/*<Route path='/pages/:pageId' element={ <DetailLayout user={user} pages={pages} setPages={setPages}  blocks={blocks} setBlocks={setBlocks} setDirty={setDirty} />} />*/}
+            <Route path='/' element={ <Home ticket={ticket} setTicket={setTicket} services={services} setServices={setServices} dirty={dirty} setDirty={setDirty}/> } />
+            <Route path='/ticket/:ticketID' element={<Ticket ticket={ticket} setTicket={setTicket} services={services} setServices={setServices}/>} /> 
             <Route path='/*' element={<DefaultRoute />} />
           </Routes>
         </Container>
