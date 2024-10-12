@@ -12,9 +12,9 @@ const routePath = "/api"; // Base route path for the API
   This is not the best practice. Later on, we should create a service for creating services and replace this. 
 */
 const services = [
-  { ServiceName: "S1", ServiceTime: 30 },
-  { ServiceName: "S2", ServiceTime: 45 },
-  { ServiceName: "S3", ServiceTime: 60 },
+  { ServiceName: "Service A", ServiceTime: 30 },
+  { ServiceName: "Service B", ServiceTime: 45 },
+  { ServiceName: "Service C", ServiceTime: 60 },
 ];
 const postService = async () => {
   const insert_query = `INSERT INTO Service (ServiceName, ServiceTime) VALUES (?, ?)`;
@@ -27,7 +27,7 @@ const postService = async () => {
         if (err) {
           console.error("Error inserting record:", err); // For debug purposes.
         } else {
-          // console.log("Record inserted successfully"); // For debug purposes.
+          // console.log("Record inserted successfully"); // // For debug purposes.
         }
       }
     );
@@ -45,24 +45,12 @@ afterAll(async () => {
 });
 
 describe("Service routes integration tests", () => {
-  describe("POST /tickets", () => {
-    test("It should return 201 with an instance of issued ticket", async () => {
-      // Get all services and select one
-      const res0 = await request(app).get(`${routePath}/services`).expect(200);
-      const services = res0.body;
-      const selectedServiceID = services[0].ServiceID;
-
-      const res1 = await request(app)
-        .post(`${routePath}/tickets`)
-        .send({ ServiceID: selectedServiceID })
-        .expect(201);
-
-      expect(res1.body).toBeDefined();
-      expect(res1.body.status).toBe("in queue");
-    });
-
-    test("It should return 422 if the ServiceID is not provided", async () => {
-      await request(app).post(`${routePath}/tickets`).send({}).expect(422);
+  describe("GET /services", () => {
+    test("It should return a 200 success code with an array of services", async () => {
+      const res = await request(app).get(`${routePath}/services`).expect(200);
+      expect(res.body).toBeDefined();
+      expect(res.body.length).toBe(services.length);
+      expect(res.body[0].ServiceName).toBe(services[0].ServiceName);
     });
   });
 });

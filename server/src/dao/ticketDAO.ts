@@ -29,10 +29,10 @@ class TicketDAO {
 
                 db.get(ticketID_query, (err: Error | null, row: any) => {
                     if (err) return reject(err);
-
+                    console.log("row.pastTicket: ", row.pastTicket)
                     if (row.pastTicket != null)
                         newTicket.ticketID = row.pastTicket + 1
-                    
+                    console.log("newTicket: ", newTicket, row.pastTicket)
                     db.run(insertQueue_query, [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime], (err: Error | null) => {
                         if (err) return reject(err);
                         return resolve(newTicket);
