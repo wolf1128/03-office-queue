@@ -1,11 +1,12 @@
 import { Navbar, Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineLocalPostOffice } from "react-icons/md";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Button from 'react-bootstrap/Button';
 import '../get-ticket.css';
-import { useNavigate } from 'react-router-dom';
+
 
 function CustomNavbar() {
 
@@ -32,7 +33,6 @@ function CustomNavbar() {
         </Button>
 
         {/* Center: Brand */}
-        
         <Navbar.Brand className="post-office">
             <MdOutlineLocalPostOffice size={60} className="post-office-icon"/>
             <p className="post-office-title">Italian Post Office</p>

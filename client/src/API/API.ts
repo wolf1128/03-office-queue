@@ -1,4 +1,4 @@
-import { Service, Ticket } from '../get-ticket/components/types.ts';
+import { Service, Ticket } from '../intefaces/types.ts';
 
 const baseURL = "http://localhost:3001/api/"
 

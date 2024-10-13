@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import './App.css'
 import Home from './get-ticket/components/home'
 import Ticket from './get-ticket/components/ticket'
 import CustomNavbar from './get-ticket/components/navbar';
+import { Service, Ticket as TicketType } from './intefaces/types.ts';
 import API from './API/API.ts';
-import { Service, Ticket as TicketType } from './get-ticket/components/types.ts';
+import './App.css'
 
 function DefaultRoute() {
   return(

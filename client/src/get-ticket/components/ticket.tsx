@@ -1,6 +1,6 @@
 import myIcon from '../../assets/Down_Arrow.svg';
+import { Service, Props } from '../../intefaces/types.ts';
 import '../get-ticket.css';
-import { Service, Props } from './types.ts';
 
 function Ticket(props: Props) {
 

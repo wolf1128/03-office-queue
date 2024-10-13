@@ -1,8 +1,8 @@
-import Button from 'react-bootstrap/Button';
-import '../get-ticket.css';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { Service, Ticket, Props } from '../../intefaces/types.ts';
 import API from '../../API/API.ts';
-import { Service, Ticket, Props } from './types.ts';
+import '../get-ticket.css';
 
 function Home(props: Props) {
     
@@ -32,7 +32,7 @@ function Home(props: Props) {
             <div className='button-container'>
                 {props.services.map( (service: Service) => (
                     <Button key={service.ServiceID} className='service-btn' onClick={() => goToTicket(service.ServiceID)}>
-                    {service.ServiceName} {/* Button label */}
+                        {service.ServiceName}
                     </Button>
                 ))}
             </div>
