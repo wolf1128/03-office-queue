@@ -45,6 +45,48 @@ class TicketDAO {
         });
     }
 
+    async nextCustomer(officerID: number) {
+        return new Promise<Ticket | null>((resolve, reject) => {
+            try {
+                const getTicketSql = 
+                    "WITH TicketQueue AS ( " +
+                    "    SELECT T.ServiceID, COUNT(*) AS QueueLength " +
+                    "    FROM Ticket T " +
+                    "    WHERE T.Status = 'in queue' " +
+                    "    GROUP BY T.ServiceID " +
+                    "), NextTicket AS ( " +
+                    "    SELECT T.TicketID, T.ServiceID, T.IssuedTime, T.EstimatedTime, S.ServiceTime, Q.QueueLength " +
+                    "    FROM Ticket T " +
+                    "    JOIN Officer O ON O.ServiceID = T.ServiceID " +
+                    "    JOIN Service S ON S.ServiceID = T.ServiceID " +
+                    "    JOIN TicketQueue Q ON Q.ServiceID = T.ServiceID " +
+                    "    WHERE O.OfficerID = ? AND T.Status = 'in queue' " +
+                    ") " +
+                    "SELECT TicketID, ServiceID, IssuedTime, EstimatedTime " +
+                    "FROM NextTicket " +
+                    "ORDER BY QueueLength DESC, ServiceTime ASC, TicketID ASC " +
+                    "LIMIT 1;"
+
+                const updateStatusSql = "UPDATE Ticket SET Status = 'in progress' WHERE TicketID = ?";
+
+                db.get(getTicketSql, [officerID], (err: Error | null, row: any) => {
+                    if (err) return reject(err);
+                    if (!row) return resolve(null);
+
+                    const returnedTicket = new Ticket(row.TicketID, row.ServiceID, row.IssuedTime, row.EstimatedTime, "in progress");
+
+                    db.run(updateStatusSql, [returnedTicket.ticketID], (err: Error | null) => {
+                        if (err) return reject(err);
+                        return resolve(returnedTicket);
+                    });
+                });
+
+            } catch (error) {
+                return reject(error);
+            }
+        });
+    }
+
 }
 
 

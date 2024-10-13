@@ -55,6 +55,19 @@ class TicketRoutes {
             next(err);
           })
     );
+
+    this.router.patch(
+      "/next-customer/:officerID",
+      param("officerID").notEmpty().isInt(),
+      this.errorHandler.validateRequest,
+      (req: any, res: any, next: any) =>
+        this.controller
+          .nextCustomer(req.params.officerID)
+          .then((ticket: Ticket) => res.status(200).json(ticket))
+          .catch((err) => {
+            next(err);
+          })
+    );
   }
 }
 
