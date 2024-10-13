@@ -1,10 +1,11 @@
 import myIcon from '../../assets/Down_Arrow.svg';
 import '../get-ticket.css';
+import { Service, Props } from './types.ts';
 
-function Ticket(props: any) {
+function Ticket(props: Props) {
 
     // get serviceName from serviceID
-    const myService = props.services.find( (service: any) => (
+    const myService = props.services.find( (service: Service) => (
             service.ServiceID === props.ticket.serviceID
         )
     );
@@ -38,7 +39,9 @@ function Ticket(props: any) {
                 </div>
                 <div className='service-type'>
                     Service Type
-                    <div className='service-type-number'>{myService.ServiceName}</div>
+                    <div className='service-type-number'>
+                        {myService ? myService.ServiceName : 'Unknown Service'}
+                    </div>
                 </div>
             </div>
 

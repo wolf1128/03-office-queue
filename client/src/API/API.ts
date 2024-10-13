@@ -1,14 +1,15 @@
+import { Service, Ticket } from '../get-ticket/components/types.ts';
 
 const baseURL = "http://localhost:3001/api/"
 
 /**
  * A utility function for parsing the HTTP response.
  */
-function getJson(httpResponsePromise: Promise<Response>) {
+function getJson(httpResponsePromise: Promise<Response>): Promise<any> {
     // server API always return JSON, in case of error the format is the following { error: <message> } 
     return new Promise((resolve, reject) => {
       httpResponsePromise
-        .then((response: any) => {
+        .then((response: Response) => {
           if (response.ok) {
            // the server always returns a JSON, even empty {}. Never null or non json, otherwise the method will fail
            response.json()
@@ -35,10 +36,10 @@ function getJson(httpResponsePromise: Promise<Response>) {
 * This API retrieves the list of available services 
 * for which a customer can request a ticket.
  */
-async function getAllServices() {
+async function getAllServices(): Promise<Service[]> {
     // call  /api/services
     const response = await fetch(baseURL+'services/');
-    const services = await response.json(); 
+    const services: Service[] = await response.json(); 
     if (response.ok) {
         return services
     } else {
@@ -50,7 +51,7 @@ async function getAllServices() {
 /*
 This API creates a new ticket for the specified service.
 */
-function createTicket(serviceID: number) {
+function createTicket(serviceID: number): Promise<Ticket> {
     return getJson(
       fetch(baseURL + "tickets/", {
         method: 'POST',
@@ -59,7 +60,7 @@ function createTicket(serviceID: number) {
         },
         body: JSON.stringify({'ServiceID': serviceID}) 
       })
-    )
+    ) as Promise<Ticket>;
   }
 
 

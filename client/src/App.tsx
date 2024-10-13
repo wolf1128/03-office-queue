@@ -6,6 +6,7 @@ import Home from './get-ticket/components/home'
 import Ticket from './get-ticket/components/ticket'
 import CustomNavbar from './get-ticket/components/navbar';
 import API from './API/API.ts';
+import { Service, Ticket as TicketType } from './get-ticket/components/types.ts';
 
 function DefaultRoute() {
   return(
@@ -19,13 +20,13 @@ function DefaultRoute() {
 
 function App() {
 
-  const [services, setServices] = useState([]);
-  const [ticket, setTicket] = useState([]);
+  const [services, setServices] = useState<Service[]>([]);
+  const [ticket, setTicket] = useState<TicketType>({ ticketID: 1, serviceID: 1, issuedTime: "", estimatedTime: "", status: ""});
 
   // get all the services
   useEffect(() => {
     API.getAllServices()
-      .then(services => {
+      .then((services: Service[]) => {
         setServices(services);
       });
   }, []);
@@ -36,8 +37,8 @@ function App() {
       <Container>
         <CustomNavbar/>
           <Routes>
-            <Route path='/' element={ <Home ticket={ticket} setTicket={setTicket} services={services} setServices={setServices} /> } />
-            <Route path='/ticket/:ticketID' element={<Ticket ticket={ticket} setTicket={setTicket} services={services} setServices={setServices}/>} /> 
+            <Route path='/' element={ <Home services={services} ticket={ticket} setTicket={setTicket} /> } />
+            <Route path='/ticket/:ticketID' element={<Ticket services={services} ticket={ticket} setTicket={setTicket} />} /> 
             <Route path='/*' element={<DefaultRoute />} />
           </Routes>
         </Container>
