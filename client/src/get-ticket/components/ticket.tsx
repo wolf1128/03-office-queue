@@ -1,26 +1,10 @@
-import { useEffect } from 'react'
 import myIcon from '../../assets/Down_Arrow.svg';
 import '../get-ticket.css';
-import API from '../../API/API.tsx';
-
 
 function Ticket(props: any) {
 
-    // get all services only the fistr time you enter the page
-    useEffect(() => {
-        API.getAllServices()
-            .then(services => {
-                props.setServices(services);
-            })
-            .catch(error => {
-                console.error("Error fetching services:", error);
-            });
-    }, []);
-
-    const AllServices = props.services;
-
     // get serviceName from serviceID
-    const myService = AllServices.find( (service: any) => (
+    const myService = props.services.find( (service: any) => (
             service.ServiceID === props.ticket.serviceID
         )
     );

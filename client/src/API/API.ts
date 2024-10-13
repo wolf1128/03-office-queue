@@ -1,10 +1,10 @@
 
-const baseURL = "http://localhost:3001/"
+const baseURL = "http://localhost:3001/api/"
 
 /**
  * A utility function for parsing the HTTP response.
  */
-function getJson(httpResponsePromise: any) {
+function getJson(httpResponsePromise: Promise<Response>) {
     // server API always return JSON, in case of error the format is the following { error: <message> } 
     return new Promise((resolve, reject) => {
       httpResponsePromise
@@ -37,7 +37,7 @@ function getJson(httpResponsePromise: any) {
  */
 async function getAllServices() {
     // call  /api/services
-    const response = await fetch(baseURL+'api/services/');
+    const response = await fetch(baseURL+'services/');
     const services = await response.json(); 
     if (response.ok) {
         return services
@@ -52,12 +52,11 @@ This API creates a new ticket for the specified service.
 */
 function createTicket(serviceID: number) {
     return getJson(
-      fetch(baseURL + "api/tickets/", {
+      fetch(baseURL + "tickets/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
         body: JSON.stringify({'ServiceID': serviceID}) 
       })
     )
