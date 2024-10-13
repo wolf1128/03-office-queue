@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import Button from 'react-bootstrap/Button';
-import '../get-ticket.css';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { Service, Ticket, Props } from '../../intefaces/types.ts';
+import API from '../../API/API.ts';
+import '../get-ticket.css';
 
-function Home() {
-
+function Home(props: Props) {
+    
     const navigate = useNavigate();
-    const goToTicket = () => {
-      navigate('/ticket');  // Navigate to the Home page
-    };
+    const goToTicket = (serviceID: number) => {
+        API.createTicket(serviceID)
+        .then((ticket: Ticket) => {
+          props.setTicket(ticket);
+          // Navigate to the ticket page using the ticketID
+          if (ticket && ticket.ticketID) {
+            navigate(`/ticket/${props.ticket.ticketID}`);
+          }
+        });
+      };
+
 
     return (
         <>
@@ -21,10 +30,11 @@ function Home() {
 
             {/* Button Containers */}
             <div className='button-container'>
-                <Button className='service-btn' onClick={goToTicket}>Service 01</Button>
-                <Button className='service-btn'>Service 02</Button>
-                <Button className='service-btn'>Service 04</Button>
-                <Button className='service-btn'>Service 03</Button>
+                {props.services.map( (service: Service) => (
+                    <Button key={service.ServiceID} className='service-btn' onClick={() => goToTicket(service.ServiceID)}>
+                        {service.ServiceName}
+                    </Button>
+                ))}
             </div>
 
             {/* Help Button */}

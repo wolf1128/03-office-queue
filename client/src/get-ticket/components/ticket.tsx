@@ -1,14 +1,14 @@
-import { useState, useRef } from 'react'
 import myIcon from '../../assets/Down_Arrow.svg';
+import { Service, Props } from '../../intefaces/types.ts';
 import '../get-ticket.css';
 
+function Ticket(props: Props) {
 
-function Ticket() {
-
-    const [ticketNo, setTicketNo] = useState(110);
-    const [waitingTime, setWaitingTime] = useState(0);
-    const [serviceType, setServiceType] = useState("Service1");
-    const [show, setShow] = useState(false);
+    // get serviceName from serviceID
+    const myService = props.services.find( (service: Service) => (
+            service.ServiceID === props.ticket.serviceID
+        )
+    );
 
     return (
         <>            
@@ -26,7 +26,7 @@ function Ticket() {
                 </span>
                 <br/>
                 <span className='ticket-number'>
-                    {ticketNo}
+                    {props.ticket.ticketID}
                 </span>
                 
             </div>
@@ -35,11 +35,13 @@ function Ticket() {
             <div className='information-box'>
                 <div className='waiting-time'>
                     Waiting Time
-                    <div className='waiting-time-number'>{waitingTime}</div>
+                    <div className='waiting-time-number'>{props.ticket.estimatedTime}</div>
                 </div>
                 <div className='service-type'>
                     Service Type
-                    <div className='service-type-number'>{serviceType}</div>
+                    <div className='service-type-number'>
+                        {myService ? myService.ServiceName : 'Unknown Service'}
+                    </div>
                 </div>
             </div>
 
