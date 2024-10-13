@@ -1,56 +1,92 @@
+/* next-customer.css */
+
 .counter-display {
-  background-color: #f9f9f9;
-  padding: 40px;
+  margin-top: 50px;
+  padding: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
-  max-width: 400px;
-  margin: 20px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.counter-number {
+  font-size: 20px;
 }
 
 .time-display p {
-  font-size: 18px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .highlight {
-  color: #0d6efd; /* Bootstrap's primary blue color */
+  color: darkblue; /* Bright blue */
   font-weight: bold;
-}
-
-.counter-circle {
-  background-color: #ffc107; /* Bootstrap's warning color */
-  border-radius: 50%;
-  padding: 8px;
-  color: black;
-  font-weight: bold;
+  font-size: 20px;
 }
 
 .ticket-box {
-  border: 2px solid #f0ad4e; /* Light orange */
+  border: 1px solid #ffa500; /* Orange border */
   border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  background-color: white;
+  background-color: #ffffff;
+  width: 60%;
+}
+
+.ticket-box h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .ticket-number {
-  color: #f0ad4e; /* Orange */
-  font-size: 48px;
-  margin: 10px 0;
+  font-size: 80px;
+  font-weight: bolder;
+  color: #ff8a00; /* Bright orange for ticket number */
+  margin: 0;
 }
 
 .service-type,
 .service-time {
   text-align: center;
+  padding-top: 10px;
+}
+
+.service-type p,
+.service-time p {
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.service-type h5,
+.service-time h5 {
+  font-size: 15px;
+  font-weight: bold;
+  color: darkblue; /* Blue for service type and time */
 }
 
 .call-button {
-  background-color: #f0ad4e;
+  width: 60%;
+  background-color: #ff8a00; /* Bright orange */
   border: none;
   font-size: 18px;
-  padding: 10px 30px;
-  margin-top: 20px;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .call-button:hover {
-  background-color: #ec971f; /* Darker orange */
+  background-color: #e67e22; /* Slightly darker orange on hover */
+}
+
+/* Align Time and Counter on the same row */
+.row.justify-content-end {
+  align-items: center;
+}
+
+p.text-end {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
 }
