@@ -63,11 +63,8 @@ function createTicket(serviceID: number): Promise<Ticket> {
 
 function nextCustomer(officerID: number): Promise<Ticket> {
   return getJson(
-    fetch(baseURL + "next-customer/:officerID", {
+    fetch(`${baseURL}next-customer/${officerID}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({ officerID: officerID }),
     })
   ) as Promise<Ticket>;
