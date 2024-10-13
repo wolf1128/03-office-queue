@@ -45,4 +45,3 @@ This API is used by the counter staff/officer to call the next customer based on
 - **500 Internal Server Error**: If there is an issue processing the request.
 
 ---
-

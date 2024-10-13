@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/tickets HTTP/1.1
+content-type: application/json
+
+{
+    "ServiceID": 1
+}
+
+###
+
+GET http://localhost:3001/api/services HTTP/1.1

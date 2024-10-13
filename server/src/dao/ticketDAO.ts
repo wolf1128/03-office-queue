@@ -1,40 +1,41 @@
 import db from "../db/db";
-import { Ticket } from "../components/ticket";
-
+import Ticket from "../components/ticket";
 
 class TicketDAO {
 
     /*
-        Returns the next ticket (least recent based on the IssuedTime) in the queue of a given service.
-        If there are no tickets in the queue of the given service, it returns null.
-        The ticket is marked as "in progress".
+        Returns the newly generated ticket.
+        -DB errors
+        The ticket is marked as "in queue".
 
-        DB: table Queue (TicketID, ServiceID, IssuedTime, EstimatedTime, Status),
+        DB: table Ticket (TicketID, ServiceID, IssuedTime, EstimatedTime, Status),
             table Service (ServiceID, ServiceName, ServiceTime).
 
         Status can be: "in queue", "in progress", "completed".
     */
-    async nextCustomer(serviceName: string) {
+    async getTicket(service: number) {
         return new Promise<Ticket | null>((resolve, reject) => {
             try {
-                const serviceIDsql = "SELECT ServiceID FROM Service WHERE ServiceName = ?";
-                const ticketIDsql = "SELECT TicketID FROM Queue WHERE ServiceID = ? AND Status = 'in queue' ORDER BY IssuedTime ASC LIMIT 1";
-                const updateStatusSql = "UPDATE Queue SET Status = 'in progress' WHERE TicketID = ?";
+                const ticketID_query = "SELECT MAX(TicketID) AS pastTicket FROM Ticket";
+                const insertQueue_query = "INSERT INTO Ticket VALUES(?,?,?,null,'in queue')";
 
-                db.get(serviceIDsql, [serviceName], (err: Error | null, row: any) => {
+                const date = new Date()
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+
+                let newTicket: Ticket = new Ticket(1, service, formattedDate, 0, "in queue")
+
+                db.get(ticketID_query, (err: Error | null, row: any) => {
                     if (err) return reject(err);
-                    if (row.count < 1) return reject(new ServiceNotFoundError());
-
-                    db.get(ticketIDsql, [row.ServiceID], (err: Error | null, row: any) => {
+                    console.log("row.pastTicket: ", row.pastTicket)
+                    if (row.pastTicket != null)
+                        newTicket.ticketID = row.pastTicket + 1
+                    console.log("newTicket: ", newTicket, row.pastTicket)
+                    db.run(insertQueue_query, [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime], (err: Error | null) => {
                         if (err) return reject(err);
-                        if (row.count < 1) return resolve(null);
-
-                        const returnedTicket = new Ticket(row.TicketID, row.ServiceID, row.IssuedTime, row.EstimatedTime, "in progress");
-
-                        db.run(updateStatusSql, [returnedTicket.TicketID], (err: Error | null) => {
-                            if (err) return reject(err);
-                            return resolve(returnedTicket);
-                        });
+                        return resolve(newTicket);
                     });
                 });
 
