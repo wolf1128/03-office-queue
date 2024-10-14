@@ -7,6 +7,7 @@ import CustomNavbar from './get-ticket/components/navbar';
 import { Service, Ticket as TicketType } from './intefaces/types.ts';
 import API from './API/API.ts';
 import './App.css'
+import DisplayBoard from './call-customer/components/board.tsx';
 
 function DefaultRoute() {
   return(
@@ -31,14 +32,17 @@ function App() {
       });
   }, []);
 
+  const showNavbar = location.pathname !== '/displayboard';
+     
 
   return (
     <BrowserRouter>
       <Container>
-        <CustomNavbar/>
+      {showNavbar && <CustomNavbar />}
           <Routes>
             <Route path='/' element={ <Home services={services} ticket={ticket} setTicket={setTicket} /> } />
             <Route path='/ticket/:ticketID' element={<Ticket services={services} ticket={ticket} setTicket={setTicket} />} /> 
+            <Route path='/displayboard' element={<DisplayBoard />} /> 
             <Route path='/*' element={<DefaultRoute />} />
           </Routes>
         </Container>
