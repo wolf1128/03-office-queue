@@ -104,10 +104,10 @@ This API is used by the counter staff/officer to call the next customer based on
 - **Body** (JSON):
 ```json
 [
-  { "ticketNumber": 9876, 
-    "serviceName": "Deposit Money", 
-    "serviceTime": "5 minutes", 
-    "queueLength": 3,
+  { "ticketID": 9876, 
+    "serviceID": 42, 
+    "issuedTime": "2024-10-10T10:00:00Z", 
+    "estimatedTime": 15,
     "status": "in progress"}
 ]
 ```
