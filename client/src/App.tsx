@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import Home from './get-ticket/components/home'
 import Ticket from './get-ticket/components/ticket'
 import CustomNavbar from './shared-components/navbar.tsx';
-import { Service, Ticket as TicketType } from './intefaces/types.ts';
+import { Service, Ticket as TicketType } from './interfaces/types.ts';
 import API from './API/API.ts';
 import './App.css'
 import DisplayBoard from './call-customer/components/board.tsx';

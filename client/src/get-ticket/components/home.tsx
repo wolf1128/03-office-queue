@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { Service, Ticket, Props } from '../../intefaces/types.ts';
+import { Service, Ticket, Props } from '../../interfaces/types.ts';
 import API from '../../API/API.ts';
 import '../get-ticket.css';
 
