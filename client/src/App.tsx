@@ -40,7 +40,7 @@ function App() {
           <Routes>
             <Route path='/' element={ <Home services={services} ticket={ticket} setTicket={setTicket} /> } />
             <Route path='/ticket/:ticketID' element={<Ticket services={services} ticket={ticket} setTicket={setTicket} />} /> 
-            <Route path='/displayboard' element={<DisplayBoard />} /> 
+            <Route path='/displayboard' element={<DisplayBoard/>} /> 
             <Route path='/*' element={<DefaultRoute />} />
           </Routes>
         </Container>

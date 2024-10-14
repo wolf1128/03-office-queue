@@ -20,3 +20,20 @@ export interface Service {
     setTicket: React.Dispatch<React.SetStateAction<Ticket>>;
   }
   
+
+  export interface TicketData {
+    TicketID: number;
+    CounterID: number;
+    CounterLabel: string;
+  }
+
+  export interface WaitingQueueItem {
+      ServiceID: number;
+      ServiceName: string;
+      noOfPeople: number;
+  }
+
+  export interface NotificationsResponse {
+      data: TicketData;
+      waitingQueue: WaitingQueueItem[];
+  }

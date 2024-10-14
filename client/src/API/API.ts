@@ -1,4 +1,4 @@
-import { Service, Ticket } from '../interfaces/types.ts';
+import { Service, Ticket, NotificationsResponse } from '../interfaces/types.ts';
 
 const baseURL = "http://localhost:3001/api/"
 
@@ -47,6 +47,21 @@ async function getAllServices(): Promise<Service[]> {
     }
   }
 
+  /** ------------------- Notifications APIs ------------------------ */
+/*
+ * This API retrieves notifications including ticket information and waiting queue details.
+ */
+async function getNotifications(): Promise<NotificationsResponse> {
+    // call /api/notifications
+    const response = await fetch(baseURL + 'notifications/');
+    const notifications: NotificationsResponse = await response.json();
+    if(response.ok){
+      return notifications
+    } else {
+      throw new Error("Failed to fetch notifications: " + response.statusText);
+    }
+  }
+
 /** ------------------- Tickets APIs ------------------------ */
 /*
 This API creates a new ticket for the specified service.
@@ -66,6 +81,6 @@ function createTicket(serviceID: number): Promise<Ticket> {
 
 
 const API = {
-    getAllServices, createTicket
+    getAllServices, createTicket, getNotifications
   };
   export default API;

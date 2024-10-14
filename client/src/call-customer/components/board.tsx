@@ -1,17 +1,84 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import '../call-customer.css';
 import Clock from './clock.tsx';
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { TbHourglassEmpty } from "react-icons/tb";
+import { Service, Props, NotificationsResponse } from '../../interfaces/types.ts';
+import API from '../../API/API.ts';
 
 function DisplayBoard() {
 
-    const [ticketNo, setTicketNo] = useState(110);
-    const queue1: number = 0;
-    const queue2: number = 1;
-    const queue3: number = 5;
+    const [notifications, setNotifications] = useState<NotificationsResponse>(
+        {
+            "data": {          
+                "TicketID": 0,
+                "CounterID": 0,
+                "CounterLabel": ""
+            },
+            "waitingQueue": [
+                {   
+                "ServiceID": 0,
+                "ServiceName": "",
+                "noOfPeople": 0
+                },
+                {
+                "ServiceID": 0,
+                "ServiceName": "",           
+                "noOfPeople": 0
+                },
+                {
+                "ServiceID": 0,
+                "ServiceName": "",           
+                "noOfPeople": 0
+                },
+                {
+                "ServiceID": 0,
+                "ServiceName": "",           
+                "noOfPeople": 0
+                }     
+            ]
+           }
+    );
 
+    // Function to fetch notifications
+    const fetchNotifications = () => {
+        API.getNotifications()
+            .then((notifications: NotificationsResponse) => {
+                setNotifications(notifications);
+            });
+    };
+
+    // Fetch notifications on component mount and set up interval
+    useEffect(() => {
+        fetchNotifications(); // Initial fetch
+        
+        const intervalId = setInterval(fetchNotifications, 15000); // Fetch every 15 seconds
+
+        // Cleanup the interval on component unmount
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []); // Empty dependency array to run once on mount
+
+    /*
+    useEffect(() => {
+        // WebSocket connection
+        const socket = new WebSocket('ws://localhost:3001'); // Adjust URL as needed
+
+        // Event listener for receiving messages
+        socket.onmessage = (event) => {
+            const notifications: NotificationsResponse = JSON.parse(event.data);
+            setNotifications(notifications);
+        };
+
+        // Cleanup WebSocket on unmount
+        return () => {
+            socket.close();
+        };
+    }, []); // Empty dependency array to run once on mount
+    
+    */
 
     return (
         <>
@@ -25,7 +92,7 @@ function DisplayBoard() {
                         </span>
                         <br/>
                         <span className='ticket-number'>
-                            {ticketNo}
+                            {notifications ? notifications.data.TicketID : "Loading..."}
                         </span>
                         <br/>
                         <span className='ticket-subtext'>
@@ -33,7 +100,7 @@ function DisplayBoard() {
                         </span>
                         <br/>
                         <span className='ticket-counter'>
-                            Counter 01
+                            {notifications ? notifications.data.CounterLabel : "Loading..."}
                         </span>                
                     </div>
                 </div>
@@ -45,27 +112,21 @@ function DisplayBoard() {
                         </span>
                     </div>
                     <div className='queue-box'>
-                        <div className='service-queue'>
-                            <span className='service-queue-lentgh'>{queue1}</span>
-                            <span className='service-queue-icon'>
-                                {queue1 === 0 ? <TbHourglassEmpty /> : queue1 === 1 ? <BsFillPersonFill /> : <BsFillPeopleFill />}
-                            </span>
-                            <span className='service-queue-text'>Service 01</span>
-                        </div>
-                        <div className='service-queue'>
-                            <span className='service-queue-lentgh'>{queue3}</span>
-                            <span className='service-queue-icon'>
-                                {queue3 === 0 ? <TbHourglassEmpty /> : queue3 === 1 ? <BsFillPersonFill /> : <BsFillPeopleFill />}
-                            </span>
-                            <span className='service-queue-text'>Service 02</span>
-                        </div>
-                        <div className='service-queue'>
-                            <span className='service-queue-lentgh'>{queue2}</span>
-                            <span className='service-queue-icon'>
-                                {queue2 === 0 ? <TbHourglassEmpty /> : queue2 === 1 ? <BsFillPersonFill /> : <BsFillPeopleFill />}
-                            </span>
-                            <span className='service-queue-text'>Service 03</span>
-                        </div>
+                        {notifications?.waitingQueue.map((item) => (
+                            <div key={item.ServiceID} className='service-queue'>
+                                <span className='service-queue-lentgh'>{item.noOfPeople}</span>
+                                <span className='service-queue-icon'>
+                                    {item.noOfPeople === 0 ? (
+                                        <TbHourglassEmpty />
+                                    ) : item.noOfPeople === 1 ? (
+                                        <BsFillPersonFill />
+                                    ) : (
+                                        <BsFillPeopleFill />
+                                    )}
+                                </span>
+                                <span className='service-queue-text'>{item.ServiceName}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
