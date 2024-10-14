@@ -94,15 +94,9 @@ This API is used by the counter staff/officer to call the next customer based on
 
 ### Request:
 - **Method**: PATCH
-- **URL**: `/api/next-custormer`
+- **URL**: `/api/next-custormer/:officerID`
 - **Parameters**: 
-```json
-[
-  { 
-  "officerId": 456
-}
-]
-```
+  - officerID: an integer number
 
 
 ### Response:
