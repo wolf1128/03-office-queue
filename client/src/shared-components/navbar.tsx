@@ -1,11 +1,11 @@
 import { Navbar, Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { MdOutlineLocalPostOffice } from "react-icons/md";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
-import '../get-ticket.css';
+import './navbar.css';
 
 
 function CustomNavbar() {
@@ -19,18 +19,30 @@ function CustomNavbar() {
       </Tooltip>
     );
 
+  const location = useLocation();
   const navigate = useNavigate();
   const goToHome = () => {
-    navigate('/');  // Navigate to the Home page
+    navigate('/');
   };
-  
+  const goToDisplayBoard = () => {
+    navigate('/displayboard');
+  };
+
   return (
     <Navbar className="navbar" bg="light" expand="lg">
       <Container fluid className="navbar-container">
         {/* Left: Back Button */}
-        <Button className="btn btn-outline" onClick={goToHome}>
-          Home
-        </Button>
+        <div className="navbar-buttons">
+          {location.pathname === '/' ? (
+            <Button className="btn btn-outline" onClick={goToDisplayBoard}>
+              Display Board
+            </Button>
+          ) : (
+            <Button className="btn btn-outline" onClick={goToHome}>
+              Home
+            </Button>
+          )}
+        </div>
 
         {/* Center: Brand */}
         <Navbar.Brand className="post-office">
@@ -39,15 +51,17 @@ function CustomNavbar() {
         </Navbar.Brand>
 
         {/* Right: Info Icon */}
-        <OverlayTrigger
-                placement="bottom-start"
-                delay={{ show: 250, hide: 400 }}
-                overlay={renderTooltip}
-                >
-                <Button className='info-btn'>
-                    <IoIosInformationCircleOutline size={28}/>
-                </Button>
-            </OverlayTrigger>
+        <div className="navbar-info">
+          <OverlayTrigger
+            placement="bottom-start"
+            delay={{ show: 250, hide: 400 }}
+            overlay={renderTooltip}
+          >
+            <Button className='info-btn'>
+              <IoIosInformationCircleOutline size={28} />
+            </Button>
+          </OverlayTrigger>
+        </div>
       </Container>
     </Navbar>
   )
@@ -55,5 +69,5 @@ function CustomNavbar() {
 
 }
 
-export default CustomNavbar
+export default CustomNavbar;
 

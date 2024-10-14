@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Home from './get-ticket/components/home'
 import Ticket from './get-ticket/components/ticket'
-import CustomNavbar from './get-ticket/components/navbar';
+import CustomNavbar from './shared-components/navbar.tsx';
 import { Service, Ticket as TicketType } from './interfaces/types.ts';
 import API from './API/API.ts';
 import './App.css'
+import DisplayBoard from './call-customer/components/board.tsx';
 
 function DefaultRoute() {
   return(
@@ -31,15 +32,15 @@ function App() {
       });
   }, []);
 
-
+  
   return (
     <BrowserRouter>
       <Container>
-        <CustomNavbar/>
+        <CustomNavbar />
           <Routes>
             <Route path='/' element={ <Home services={services} ticket={ticket} setTicket={setTicket} /> } />
             <Route path='/ticket/:ticketID' element={<Ticket services={services} ticket={ticket} setTicket={setTicket} />} /> 
-            <Route path='/display-board' element={<Ticket services={services} ticket={ticket} setTicket={setTicket} />} /> 
+            <Route path='/displayboard' element={<DisplayBoard />} /> 
             <Route path='/*' element={<DefaultRoute />} />
           </Routes>
         </Container>
