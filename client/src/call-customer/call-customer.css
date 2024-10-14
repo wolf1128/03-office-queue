@@ -1,0 +1,131 @@
+.full-page{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.column{
+    width: 50%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* clock */
+.time-box {
+    position: absolute;
+    top: 20px;
+    left:50px;
+}
+
+.time-text {
+    color: #2b2b2b;
+    font-size: 36px;
+    text-align: center;
+}
+
+.time-number{
+    color: #103783;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Ticket Number Box */
+.ticket-box {
+    border: 2px solid orange;
+    background-color: orange;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 20px;
+    margin: 20px auto; 
+    width: 350px;
+}
+
+/* Ticket Text */
+.ticket-text {
+    text-align: center;
+    font-weight: bold;
+    color: #2b2b2b;
+    font-size: 44px;  
+}
+
+.ticket-subtext{
+    text-align: center;
+    color: #2b2b2b;
+    font-size: 24px;  
+}
+
+/* Ticket Number */
+.ticket-number {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 120px;
+    
+}
+
+.ticket-counter {
+    text-align: center;
+    font-weight: bold;
+    color: #103783;
+    font-size: 44px;    
+}
+
+/* Waiting queue */
+.queue-title{
+    position: absolute;
+    top: 20px;
+    align-items: center;
+}
+
+.queue-text {
+    text-align: center;
+    font-weight: bold;
+    color: #2b2b2b;
+    font-size: 44px;  
+}
+
+.queue-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.service-queue {
+    width: 500px;
+    height: 90px;
+    margin: 5px;
+    border: 3px solid orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.service-queue-lentgh{
+    text-align: right;
+    font-weight: bold;
+    color: orange;
+    font-size: 44px; 
+    width: 30%;
+
+}
+
+.service-queue-text{
+    text-align: center;
+    font-weight: bold;
+    color: #103783;
+    font-size: 44px; 
+    width: 70%;
+    
+}
