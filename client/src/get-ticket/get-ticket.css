@@ -2,13 +2,24 @@
     width: 100%;
     position: absolute;
     top: 0px;
-    left:0px;
+    left: 0px;
 }
 
 .navbar-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    height: 80px;
+}
+
+.navbar-info {
+    position: absolute;
+    right: 20px;
+}
+
+.navbar-buttons {
+    position: absolute; 
+    left: 20px;
 }
 
 .btn-outline {
@@ -28,6 +39,7 @@
     color: #103783;
     border-color: white; 
     background-color: white;
+    
 }
 
 .info-btn:hover {
