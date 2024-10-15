@@ -1,6 +1,6 @@
 # Office Queue Management Full API Specifications
 
-This document lists all the expected behaviors for the APIs for get-ticket that compose the Office Queue Management application.
+This document lists all the expected behaviors for the APIs that compose the Office Queue Management application.
 
 
 # GET TICKET API Documentation
@@ -80,5 +80,44 @@ This API creates a new ticket for the specified service.
 
 - **400 Bad Request**: If required parameters are missing or invalid.
 - **500 Internal Server Error**: If there is an issue processing the request.
+
+---
+
+
+# NEXT CUSTOMER API Documentation
+
+## 1. PATCH /api/next-customer
+
+### Description:
+
+This API is used by the counter staff/officer to call the next customer based on the service types handled by their counter. It selects the next ticket based on the longest queue or, if queues are of the same length, based on the shortest service time.
+
+### Request:
+- **Method**: PATCH
+- **URL**: `/api/tickets/next-custormer/:officerID`
+- **Parameters**: 
+  - officerID (number): an integer number greater than 0, representing the ID of the officer that requested the next customer.
+
+
+### Response:
+- **Status**: 200 OK
+- **Body** (JSON):
+```json
+[
+  { "ticketID": 9876, 
+    "serviceID": 42, 
+    "issuedTime": "2024-10-10T10:00:00Z", 
+    "estimatedTime": 15,
+    "status": "in progress"}
+]
+```
+
+---
+
+## Error Responses:
+
+- **404 Not Found**: If the parameter officerID is missing.
+- **422 Unprocessable Entity**: If the parameter officerID less than or equal to 0, or is not an integer.
+- **503 Internal Server Error**: If there is an issue processing the request.
 
 ---

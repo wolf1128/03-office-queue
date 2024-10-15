@@ -1,0 +1,109 @@
+/* next-customer.css */
+
+.counter-display {
+  margin-top: 50px;
+  padding: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.counter-number {
+  font-size: 20px;
+}
+
+.time-display p {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.highlight {
+  color: #103783; /* Bright blue */
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ticket-box {
+  border: 1px solid #ffa500; /* Orange border */
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 60%;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.ticket-box h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.ticket-number {
+  font-size: 80px;
+  font-weight: bolder;
+  color: #ffa500; /* Bright orange for ticket number */
+  margin: 0;
+}
+
+.service-type,
+.service-time {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.service-type p,
+.service-time p {
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 5px;
+  color: #2b2b2b; /* Dark grey */
+}
+
+.service-type h5,
+.service-time h5 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #103783; /* Blue for service type and time */
+}
+
+.call-button {
+  width: 60%;
+  background-color: #ffa500; /* Bright orange */
+  border: none;
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.call-button:hover {
+  background-color: #e67e22; /* Slightly darker orange on hover */
+}
+
+/* Align Time and Counter on the same row */
+.row.justify-content-end {
+  align-items: center;
+}
+
+p.text-end {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-displaypage {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+}
