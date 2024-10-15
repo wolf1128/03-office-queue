@@ -19,7 +19,7 @@
 }
 
 .highlight {
-  color: darkblue; /* Bright blue */
+  color: #103783; /* Bright blue */
   font-weight: bold;
   font-size: 20px;
 }
@@ -41,7 +41,7 @@
 .ticket-number {
   font-size: 80px;
   font-weight: bolder;
-  color: #ff8a00; /* Bright orange for ticket number */
+  color: #ffa500; /* Bright orange for ticket number */
   margin: 0;
 }
 
@@ -56,19 +56,19 @@
   font-size: 15px;
   font-weight: normal;
   margin-bottom: 5px;
-  color: black;
+  color: #2b2b2b; /* Dark grey */
 }
 
 .service-type h5,
 .service-time h5 {
   font-size: 15px;
   font-weight: bold;
-  color: darkblue; /* Blue for service type and time */
+  color: #103783; /* Blue for service type and time */
 }
 
 .call-button {
   width: 60%;
-  background-color: #ff8a00; /* Bright orange */
+  background-color: #ffa500; /* Bright orange */
   border: none;
   font-size: 18px;
   font-weight: bolder;
