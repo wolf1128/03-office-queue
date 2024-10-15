@@ -74,8 +74,43 @@ This API creates a new ticket for the specified service.
 ### Purpose:
 * Allows users to generate a ticket for a selected service, returning ticket details including the estimated wait time for the user to be served.
 
-### Error Responses:
+## Next Customer
+### 1. PATCH /api/next-customer
 
+### Description:
+This API is used by the counter staff/officer to call the next customer based on the service types handled by their counter. It selects the next ticket based on the longest queue or, if queues are of the same length, based on the shortest service time.
+
+### Request:
+- **Method**: `PATCH`
+- **URL**: `/api/tickets/next-custormer/:officerID`
+- **Body Parameters**:
+    - **officerID** (number): The ID of the officer who needs to call next customer.
+
+#### Example Request:
+```json
+{
+  "ID": 123
+}
+```
+
+### Response:
+- **Status**: 200 ok
+- **Body** (JSON):
+```json
+{
+  { "ticketID": 9876, 
+    "serviceID": 42, 
+    "issuedTime": "2024-10-10T10:00:00Z", 
+    "estimatedTime": 15,
+    "status": "in progress"}
+}
+```
+### Purpose:
+* This API is used by counter staff or officers to call the next customer in the queue. It identifies the next customer based on the service types handled by the officer’s counter. The selection logic prioritizes:
+ * The service type with the longest queue.
+* If two or more queues have the same number of customers, it selects the customer with the shortest estimated service time.
+
+### Error Responses:
 - **400 Bad Request**: If required parameters are missing or invalid.
 - **500 Internal Server Error**: If there is an issue processing the request.
 
@@ -84,9 +119,10 @@ This API creates a new ticket for the specified service.
 Represents a service available in the office for which customers can request a ticket.
 
 ### Attributes:
-* serviceID (number): The unique identifier for the service.
-* serviceName (string): The name of the service (e.g., "Service A").
-* serviceTime (number): The average time (in minutes) to process a customer for this service.
+* `serviceID` (number): The unique identifier for the service.
+* `serviceName` (string): The name of the service (e.g., "Service A").
+* `serviceTime` (number): The average time (in minutes) to process a customer for this service.
+
 ### Ticket
 Represents a customer ticket for a specific service.
 

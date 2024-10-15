@@ -9,6 +9,8 @@ The frontend of Office Queue Management is built using React, a popular JavaScri
 
 - `ticket` (in `ticket.tsx`): The component displays the details of a ticket, including its ID, estimated waiting time, and the type of service it was issued for.
 
+- `NextCustomer` (in `NextCustomer.tsx`): The component manages the display and progression of customer service tickets at a service counter. When an officer clicks the button, the system updates the display with the next customer's ticket details, the service they're getting, and the estimated time.
+
 ## Styling
 This section describes the visual design of the frontend, including the layout, color scheme, typography, and other design elements.
 ### home
@@ -17,10 +19,15 @@ This the first page that customer will face with
 ### ticket
 This page shows the detail of ticket that customer gets
 ![1-get-ticket-1](/assets/mockups/1-get-ticket-1.png)
+### Next Customer
+This page shows the detail of next customer's ticket including service type and estimated time.
+![3-next-customer](/assets/mockups/3-next-customer.png)
 
 ## API overview
-The API file provides two main functions that are used to interact with the backend:
+The API file provides main functions that are used to interact with the backend:
 ### getAllServices(): 
 Fetches the list of available services from the backend (likely called when the app needs to display the services a user can choose from).
 ### createTicket(serviceID): 
 Creates a ticket for a selected service by sending a `POST` request to the backend with the serviceID. The response contains a Ticket object.
+### nextCustomer(officerID): 
+The nextCustomer function sends a `PATCH` request to the server to retrieve the next customer in line for a specific officer. It returns a Promise that resolves to a Ticket object, which contains details about the next customer to be served (e.g., ticket number, service type, and estimated time).
