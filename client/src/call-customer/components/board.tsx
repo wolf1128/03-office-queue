@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import '../call-customer.css';
 import Clock from './clock.tsx';
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -19,20 +19,20 @@ function DisplayBoard() {
                 <div className='column'>    
                     <Clock />     
                     {/* Ticket Number Box */}
-                    <div className='ticket-box'>
-                        <span className='ticket-text'>
+                    <div className='ticket-box-orange'>
+                        <span className='board-ticket-text'>
                             Ticket No
                         </span>
                         <br/>
-                        <span className='ticket-number'>
+                        <span className='board-ticket-number'>
                             {ticketNo}
                         </span>
                         <br/>
-                        <span className='ticket-subtext'>
+                        <span className='board-ticket-subtext'>
                             please proceed to
                         </span>
                         <br/>
-                        <span className='ticket-counter'>
+                        <span className='board-ticket-counter'>
                             Counter 01
                         </span>                
                     </div>

@@ -92,7 +92,6 @@
 .custom-get-receipt {
     display: grid;
     align-items: center;
-    margin-top: 20px;
     justify-content: center;
     width: 100%;
 }
