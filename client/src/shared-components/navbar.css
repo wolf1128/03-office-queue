@@ -1,0 +1,75 @@
+.custom-navbar {
+    width: 100% !important;
+    position: absolute !important;
+    top: 0px !important;
+    left: 0px !important;
+    background-color: transparent !important;
+}
+
+.custom-navbar-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 80px !important;
+    background-color: white !important;
+}
+
+.custom-navbar-info {
+    position: absolute !important;
+    right: 20px !important;
+}
+
+.custom-navbar-buttons {
+    position: absolute !important; 
+    left: 20px !important;
+}
+
+.custom-btn-outline {
+    margin-left: 20px !important;
+    color: #103783 !important;
+    background-color: white !important;
+    border-color: #103783 !important;
+}
+
+.custom-btn-outline:hover {
+    background-color: #103783 !important;
+    color: white !important;
+    border-color: #103783 !important;
+}
+
+.custom-info-btn {
+    margin-right: 20px !important;
+    color: #103783 !important;
+    border-color: white !important; 
+    background-color: white !important;  
+}
+
+.custom-info-btn:hover {
+    border-color: #103783 !important; 
+}
+
+.tooltip .tooltip-inner.custom-info-text {
+    background-color: #838282 !important;
+    color: white !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    border: none !important;
+}
+
+.custom-post-office {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.custom-post-office-icon {
+    margin-right: 20px !important;
+    color: #2b2b2b !important;
+    text-align: right !important;
+}
+
+.custom-post-office-title {
+    text-align: left !important;
+    font-size: 36px !important;
+    color: #2b2b2b !important;
+    text-align: left !important;
+}

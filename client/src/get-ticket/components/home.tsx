@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import { Service, Ticket, Props } from '../../intefaces/types.ts';
-import API from '../../API/API.ts';
-import '../get-ticket.css';
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { Service, Ticket, Props } from "../../interfaces/types.ts";
+import API from "../../API/API.ts";
+import "../get-ticket.css";
 
 function Home(props: Props) {
     
@@ -22,24 +22,24 @@ function Home(props: Props) {
     return (
         <>
             {/* Ticket Details */}
-            <div className='ticket-details'>
+            <div className="custom-ticket-details">
                 <span>
                     Select a Service
                 </span>
             </div>
 
             {/* Button Containers */}
-            <div className='button-container'>
+            <div className="button-container">
                 {props.services.map( (service: Service) => (
-                    <Button key={service.ServiceID} className='service-btn' onClick={() => goToTicket(service.ServiceID)}>
+                    <Button key={service.ServiceID} className="service-btn" onClick={() => goToTicket(service.ServiceID)}>
                         {service.ServiceName}
                     </Button>
                 ))}
             </div>
 
             {/* Help Button */}
-            <div className='help-box'>
-                <Button className='help-btn'>Need Help?</Button>
+            <div className="help-box">
+                <Button className="help-btn">Need Help?</Button>
             </div>
 
 
