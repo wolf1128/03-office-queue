@@ -5,18 +5,16 @@ import API from "../../API/API.ts";
 import "../get-ticket.css";
 
 function Home(props: Props) {
-    
-    const navigate = useNavigate();
-    const goToTicket = (serviceID: number) => {
-        API.createTicket(serviceID)
-        .then((ticket: Ticket) => {
-          props.setTicket(ticket);
-          // Navigate to the ticket page using the ticketID
-          if (ticket && ticket.ticketID) {
-            navigate(`/ticket/${props.ticket.ticketID}`);
-          }
-        });
-      };
+  const navigate = useNavigate();
+  const goToTicket = (serviceID: number) => {
+    API.createTicket(serviceID).then((ticket: Ticket) => {
+      props.setTicket(ticket);
+      // Navigate to the ticket page using the ticketID
+      if (ticket && ticket.ticketID) {
+        navigate(`/ticket/${props.ticket.ticketID}`);
+      }
+    });
+  };
 
 
     return (
