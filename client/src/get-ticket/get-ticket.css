@@ -1,3 +1,11 @@
+.custom-homepage {
+    position: absolute !important;
+    top: 80px !important;
+    left: 0px !important;
+    width: 100% !important;
+    height: 85% !important;
+    align-items: center !important;
+}
 .custom-ticket-details {
     text-align: center !important;
     font-weight: bold !important;
@@ -84,7 +92,7 @@
     color: #103783 !important;
 }
 
-.button-container {
+.custom-button-container {
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 20px !important;
@@ -92,7 +100,7 @@
     margin-top: 10px !important;
 }
 
-.service-btn {
+.custom-service-btn {
     width: 200px !important;
     height: 130px !important;
     margin: 5px !important;
@@ -105,25 +113,28 @@
     border-radius: 20px !important;
 }
 
-.service-btn:hover {
+.custom-service-btn:hover {
     border-color: #103783 !important;
     font-size: 24px !important;
     color: #103783 !important;
     font-weight: bold !important;
 }
 
-.help-box {
-    margin-top: 50px !important;        
+.custom-help-box { 
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 50px !important;
+     
 }
 
-.help-btn {
+.custom-help-btn {
     color: white !important;
     background-color: #103783 !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
-.help-btn:hover {
+.custom-help-btn:hover {
     background-color: white !important;
     color: #103783 !important;
     border-color: #103783 !important;
