@@ -58,7 +58,7 @@ class TicketRoutes {
 
     this.router.patch(
       "/next-customer/:officerID",
-      param("officerID").notEmpty().isInt(),
+      param("officerID").notEmpty().isInt({ min: 1 }),
       this.errorHandler.validateRequest,
       (req: any, res: any, next: any) =>
         this.controller
