@@ -1,17 +1,17 @@
-import { Navbar, Container } from 'react-bootstrap';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Navbar, Container } from "react-bootstrap";
+import { useNavigate, useLocation } from "react-router-dom";
 import { MdOutlineLocalPostOffice } from "react-icons/md";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import Button from 'react-bootstrap/Button';
-import './navbar.css';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import Button from "react-bootstrap/Button";
+import "./navbar.css";
 
 
 function CustomNavbar() {
 
   const renderTooltip = (props: any) => (
-      <Tooltip className="info-text" id="button-tooltip" {...props}>
+      <Tooltip className="custom-info-text" id="button-tooltip" {...props}>
         Hey! Select any service from<br/>
         below that you want to avail<br/>
         to get a ticket. If you need <br/>
@@ -22,42 +22,42 @@ function CustomNavbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const goToHome = () => {
-    navigate('/');
+    navigate("/");
   };
   const goToDisplayBoard = () => {
-    navigate('/displayboard');
+    navigate("/displayboard");
   };
 
   return (
-    <Navbar className="navbar" bg="light" expand="lg">
-      <Container fluid className="navbar-container">
+    <Navbar className="custom-navbar" expand="lg">
+      <Container fluid className="custom-navbar-container">
         {/* Left: Back Button */}
-        <div className="navbar-buttons">
-          {location.pathname === '/' ? (
-            <Button className="btn btn-outline" onClick={goToDisplayBoard}>
+        <div className="custom-navbar-buttons">
+          {location.pathname === "/" ? (
+            <Button className="custom-btn-outline" onClick={goToDisplayBoard}>
               Display Board
             </Button>
           ) : (
-            <Button className="btn btn-outline" onClick={goToHome}>
+            <Button className="custom-btn-outline" onClick={goToHome}>
               Home
             </Button>
           )}
         </div>
 
         {/* Center: Brand */}
-        <Navbar.Brand className="post-office">
-            <MdOutlineLocalPostOffice size={60} className="post-office-icon"/>
-            <p className="post-office-title">Italian Post Office</p>
+        <Navbar.Brand className="custom-post-office">
+            <MdOutlineLocalPostOffice size={60} className="custom-post-office-icon"/>
+            <p className="custom-post-office-title">Italian Post Office</p>
         </Navbar.Brand>
 
         {/* Right: Info Icon */}
-        <div className="navbar-info">
+        <div className="custom-navbar-info">
           <OverlayTrigger
             placement="bottom-start"
             delay={{ show: 250, hide: 400 }}
             overlay={renderTooltip}
           >
-            <Button className='info-btn'>
+            <Button className="custom-info-btn">
               <IoIosInformationCircleOutline size={28} />
             </Button>
           </OverlayTrigger>
