@@ -74,6 +74,10 @@ This API creates a new ticket for the specified service.
 ### Purpose:
 * Allows users to generate a ticket for a selected service, returning ticket details including the estimated wait time for the user to be served.
 
+### Error Responses:
+- **400 Bad Request**: If required parameters are missing or invalid.
+- **500 Internal Server Error**: If there is an issue processing the request.
+
 ## Next Customer
 ### 1. PATCH /api/next-customer
 
@@ -111,8 +115,9 @@ This API is used by the counter staff/officer to call the next customer based on
 * If two or more queues have the same number of customers, it selects the customer with the shortest estimated service time.
 
 ### Error Responses:
-- **400 Bad Request**: If required parameters are missing or invalid.
-- **500 Internal Server Error**: If there is an issue processing the request.
+- **404 Not Found:** If the parameter officerID is missing.
+- **422 Unprocessable Entity:** If the parameter officerID less than or equal to 0, or is not an integer.
+- **503 Internal Server Error:** If there is an issue processing the request.
 
 ## Data Models
 ### Service
@@ -132,3 +137,19 @@ Represents a customer ticket for a specific service.
 * `issuedTime` (string): The time the ticket was issued.
 * `estimatedTime` (number): The estimated waiting time before the ticket is served.
 * `status` (string): The current status of the ticket (e.g., "Pending").
+
+### Officer
+Represents officer data about his ID and the service which served by.
+
+### Attributes:
+* `serviceID` (number): The unique identifier for the service.
+* `OfficerID` (number): The unique identifier for the officer.
+
+### Ticket History
+Tracks tickets issued for different services and counters that is going to be used by manager for the statistical investigation.
+
+### Attributes:
+* `serviceID` (number): The unique identifier for the service.
+* `ticketID` (number): The unique identifier for the ticket.
+* `issuedTime` (string): The time the ticket was issued.
+* `counter` (number): The unique identifier for each counter that give service.

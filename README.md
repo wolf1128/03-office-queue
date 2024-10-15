@@ -63,10 +63,9 @@ The tasks are assigned to each feature by clarifying the stories and requirement
 | SQL Table | Columns |
 | --- | --- |
 | Service | ServiceID, ServiceName, ServiceTime |
-| Counter | CounterID, CounterLabel |
-| Queue | QueueID/TicketID, ServiceID, IssuedTime, EstimatedWaitTime |
-| QueueHistory | QueueID/TicketID, ServiceID, CounterID, Date, ServedTime |
-| CounterConfiguration | CounterID, ServiceID, Date |
+| Officer| OfficerID, ServiceID |
+| Ticket  | TicketID, ServiceID, IssuedTime, EstimatedWaitTime, Status |
+| TicketHistory | TicketID, ServiceID, Counter, IssuedTime |
 
 ## Get ticket
  ### Story 
