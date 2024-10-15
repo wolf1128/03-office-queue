@@ -1,5 +1,5 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
-import { Service, Props } from "../../intefaces/types.ts";
+import { Service, Props } from "../../interfaces/types.ts";
 import "../next-customer.css";
 import { useDate } from "../hooks/clock.ts";
 import { useEffect, useState } from "react";
@@ -32,38 +32,40 @@ export default function NextCustomer(props: Props) {
   }, [myService]);
 
   return (
-    <Container className="counter-display text-center">
-      <Row>
-        <Col className="time-display">
-          <p>
-            Time: <span className="highlight">{time}</span>
-          </p>
-        </Col>
-        <Col>
-          <p className="counter-number">
-            Your Counter No. <span className="highlight">{officerId}</span>
-          </p>
-        </Col>
-      </Row>
-
-      <div className="ticket-box">
-        <h4>Next Ticket No</h4>
-        <h1 className="ticket-number">{ticketNumber}</h1>
-        <Row className="justify-content-center">
-          <Col xs={6} className="service-type">
-            <p>Service type</p>
-            <h5 className="highlight">{serviceName}</h5>
+    <div className="custom-displaypage">
+      <Container className="counter-display text-center">
+        <Row>
+          <Col className="time-display">
+            <p>
+              Time: <span className="highlight">{time}</span>
+            </p>
           </Col>
-          <Col xs={6} className="service-time">
-            <p>Serving Time</p>
-            <h5 className="highlight">{estimatedTime}</h5>
+          <Col>
+            <p className="counter-number">
+              Your Counter No. <span className="highlight">{officerId}</span>
+            </p>
           </Col>
         </Row>
-      </div>
 
-      <Button variant="warning" size="lg" className="call-button" onClick={handleButton}>
-        Call Next Customer
-      </Button>
-    </Container>
+        <div className="ticket-box">
+          <h4>Next Ticket No</h4>
+          <h1 className="ticket-number">{ticketNumber}</h1>
+          <Row className="justify-content-center">
+            <Col xs={6} className="service-type">
+              <p>Service type</p>
+              <h5 className="highlight">{serviceName}</h5>
+            </Col>
+            <Col xs={6} className="service-time">
+              <p>Serving Time</p>
+              <h5 className="highlight">{estimatedTime}</h5>
+            </Col>
+          </Row>
+        </div>
+
+        <Button variant="warning" size="lg" className="call-button" onClick={handleButton}>
+          Call Next Customer
+        </Button>
+      </Container>
+    </div>
   );
 }

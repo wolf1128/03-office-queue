@@ -1,191 +1,160 @@
-.navbar {
-  width: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+.custom-homepage {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 100%;
+    height: 80%;
+    align-items: center;
+}
+.custom-ticket-details {
+    text-align: center;
+    font-weight: bold;
+    color: #103783;
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
-.navbar .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.custom-ticket-box {
+    border: 2px solid orange;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 20px;
+    margin: 20px auto; 
+    width: 300px;
+    height: 250px;
+    display: grid;
 }
 
-.navbar-container .btn-outline {
-  margin-left: 20px;
-  color: #103783;
-  border-color: #103783;
+.custom-ticket-text {
+    color: #2b2b2b;
+    font-size: 24px;
+    text-align: center;
 }
 
-.navbar-container .btn-outline:hover {
-  background-color: #103783;
-  color: white;
-  border-color: #103783;
+.custom-ticket-number {
+    text-align: center;
+    color: orange;
+    font-weight: bold;
+    font-size: 110px;
 }
 
-.navbar-container .info-btn {
-  margin-right: 20px;
-  color: #103783;
-  border-color: white;
-  background-color: white;
+.custom-information-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
 }
 
-.navbar-container .info-btn:hover {
-  border-color: #103783;
+.custom-padding {
+    width: 25%;
 }
 
-.info-text {
-  background-color: #838282;
-  padding: 15px;
-  border-radius: 5px;
-  color: white;
+.custom-waiting-time {
+    width: 25%;
+    text-align: center;
+    color: #103783;
+    font-size: 24px;
 }
 
-.navbar-container .post-office {
-  display: flex;
-  align-items: center;
+.custom-service-type {
+    width: 25%;
+    text-align: center;
+    color: #103783;
+    font-size: 24px;
 }
 
-.navbar-container .post-office-icon {
-  margin-right: 20px;
-  color: #2b2b2b;
-  text-align: right;
+.custom-waiting-time-number {
+    text-align: center;
+    color: #2b2b2b;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 5px;
 }
 
-.post-office .post-office-title {
-  text-align: left;
-  font-size: 36px;
-  color: #2b2b2b;
-  text-align: left;
+.custom-service-type-number {
+    text-align: center;
+    color: #2b2b2b;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 20px;
 }
 
-.ticket-details {
-  text-align: center;
-  font-weight: bold;
-  color: #103783;
-  font-size: 40px;
-  margin-bottom: 10px;
-  margin-top: 50px;
+.custom-wait-service {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
-.ticket-box {
-  border: 2px solid orange;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 35px;
-  padding-right: 35px;
-  border-radius: 20px;
-  margin: 20px auto;
-  width: 250px;
+.custom-get-receipt {
+    display: grid;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
 }
 
-.ticket-box .ticket-text {
-  color: #2b2b2b;
-  font-size: 24px;
-  text-align: center;
+.custom-get-receipt-text {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #103783;
 }
 
-.ticket-box .ticket-number {
-  text-align: center;
-  color: orange;
-  font-weight: bold;
-  font-size: 100px;
+.custom-get-receipt-icon {
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
-.information-box {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  width: 500px;
+.custom-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.information-box .waiting-time {
-  width: 45%;
-  text-align: center;
-  color: #103783;
-  font-size: 24px;
+.custom-service-btn {
+    width: 200px;
+    height: 130px;
+    margin: 5px;
+    background-color: orange;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
 }
 
-.information-box .service-type {
-  width: 45%;
-  color: #103783;
-  font-size: 24px;
+.custom-service-btn:hover {
+    border-color: #103783;
+    font-size: 24px;
+    color: #103783;
+    font-weight: bold;
+    background-color: orange;
 }
 
-.waiting-time .waiting-time-number {
-  text-align: center;
-  color: #2b2b2b;
-  font-weight: bold;
-  font-size: 20px;
-  padding-top: 5px;
+.custom-help-box { 
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+     
 }
 
-.service-type-number {
-  text-align: center;
-  color: #2b2b2b;
-  font-weight: bold;
-  padding-top: 5px;
-  font-size: 20px;
+.custom-help-btn {
+    color: white;
+    background-color: #103783;
+    align-items: center;
+    justify-content: center;
 }
 
-.wait-service {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-
-.get-receipt {
-  margin-top: 20px;
-}
-
-.get-receipt .get-receipt-text {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  color: #103783;
-}
-
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.button-container .service-btn {
-  width: 200px;
-  height: 130px;
-  margin: 5px;
-  background-color: orange;
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-}
-
-.button-container .service-btn:hover {
-  border-color: #103783;
-  font-size: 24px;
-  color: #103783;
-  font-weight: bold;
-}
-
-.help-box {
-  margin-top: 50px;
-}
-
-.help-box .help-btn {
-  color: white;
-  background-color: #103783;
-  align-items: center;
-  justify-content: center;
-}
-
-.help-box .help-btn:hover {
-  background-color: white;
-  color: #103783;
-  border-color: #103783;
+.custom-help-btn:hover {
+    background-color: white;
+    color: #103783;
+    border-color: #103783;
 }
