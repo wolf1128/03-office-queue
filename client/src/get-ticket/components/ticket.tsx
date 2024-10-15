@@ -14,45 +14,49 @@ function Ticket(props: Props) {
         <> 
             <div className="custom-homepage">           
                 {/* Ticket Details */}
-                <div className="ticket-details">
+                <div className="custom-ticket-details">
                     <span>
                         Ticket Details
                     </span>
                 </div>
 
                 {/* Ticket Number Box */}
-                <div className="ticket-box">
-                    <span className="ticket-text">
+                <div className="custom-ticket-box">
+                    <span className="custom-ticket-text">
                         Your Ticket Number
                     </span>
                     <br/>
-                    <span className="ticket-number">
+                    <span className="custom-ticket-number">
                         {props.ticket.ticketID}
                     </span>
                     
                 </div>
                 
                 {/* Information Box */}
-                <div className="information-box">
-                    <div className="waiting-time">
+                <div className="custom-information-box">
+                    <div className="custom-padding"></div>
+                    <div className="custom-waiting-time">
                         Waiting Time
-                        <div className="waiting-time-number">{props.ticket.estimatedTime}</div>
+                        <div className="custom-waiting-time-number">{props.ticket.estimatedTime}</div>
                     </div>
-                    <div className="service-type">
+                    <div className="custom-service-type">
                         Service Type
-                        <div className="service-type-number">
+                        <div className="custom-service-type-number">
                             {myService ? myService.ServiceName : "Unknown Service"}
                         </div>
                     </div>
+                    <div className="custom-padding"></div>
                 </div>
 
                 {/* Get Your Receipt */}
-                <div className="get-receipt">
-                    <span className="get-receipt-text">
+                <div className="custom-get-receipt">
+                    <span className="custom-get-receipt-text">
                         Get your Receipt
                     </span>
-                    <br/>    
-                    <img src={myIcon} alt="My Local Icon" width="60" height="60" />
+                    <br/> 
+                    <span className="custom-get-receipt-icon">   
+                        <img src={myIcon} alt="My Local Icon" width="60" height="60" />
+                    </span>
                 </div>
             </div>
         </>

@@ -1,141 +1,160 @@
 .custom-homepage {
-    position: absolute !important;
-    top: 80px !important;
-    left: 0px !important;
-    width: 100% !important;
-    height: 85% !important;
-    align-items: center !important;
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 100%;
+    height: 80%;
+    align-items: center;
 }
 .custom-ticket-details {
-    text-align: center !important;
-    font-weight: bold !important;
-    color: #103783 !important;
-    font-size: 40px !important;
-    margin-bottom: 10px !important;
-    margin-top: 50px !important;
+    text-align: center;
+    font-weight: bold;
+    color: #103783;
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
-.ticket-box {
-    border: 2px solid orange !important;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
-    padding-left: 35px !important;
-    padding-right: 35px !important;
-    border-radius: 20px !important;
-    margin: 20px auto !important; 
-    width: 250px !important;
+.custom-ticket-box {
+    border: 2px solid orange;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 20px;
+    margin: 20px auto; 
+    width: 300px;
+    height: 250px;
+    display: grid;
 }
 
-.ticket-text {
-    color: #2b2b2b !important;
-    font-size: 24px !important;
-    text-align: center !important;
+.custom-ticket-text {
+    color: #2b2b2b;
+    font-size: 24px;
+    text-align: center;
 }
 
-.ticket-number {
-    text-align: center !important;
-    color: orange !important;
-    font-weight: bold !important;
-    font-size: 100px !important;
+.custom-ticket-number {
+    text-align: center;
+    color: orange;
+    font-weight: bold;
+    font-size: 110px;
 }
 
-.information-box {
-    display: flex !important;
-    justify-content: space-between !important;
-    padding: 10px !important;
-    width: 500px !important;
+.custom-information-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
 }
 
-.waiting-time {
-    width: 45% !important;
-    text-align: center !important;
-    color: #103783 !important;
-    font-size: 24px !important;
+.custom-padding {
+    width: 25%;
 }
 
-.service-type {
-    width: 45% !important;
-    color: #103783 !important;
-    font-size: 24px !important;
+.custom-waiting-time {
+    width: 25%;
+    text-align: center;
+    color: #103783;
+    font-size: 24px;
 }
 
-.waiting-time-number {
-    text-align: center !important;
-    color: #2b2b2b !important;
-    font-weight: bold !important;
-    font-size: 20px !important;
-    padding-top: 5px !important;
+.custom-service-type {
+    width: 25%;
+    text-align: center;
+    color: #103783;
+    font-size: 24px;
 }
 
-.service-type-number {
-    text-align: center !important;
-    color: #2b2b2b !important;
-    font-weight: bold !important;
-    padding-top: 5px !important;
-    font-size: 20px !important;
+.custom-waiting-time-number {
+    text-align: center;
+    color: #2b2b2b;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 5px;
 }
 
-.wait-service {
-    display: flex !important;
-    justify-content: space-around !important;
-    text-align: center !important;
+.custom-service-type-number {
+    text-align: center;
+    color: #2b2b2b;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 20px;
 }
 
-.get-receipt {
-    margin-top: 20px !important;
+.custom-wait-service {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
-.get-receipt-text {
-    text-align: center !important;
-    font-size: 30px !important;
-    font-weight: bold !important;
-    color: #103783 !important;
+.custom-get-receipt {
+    display: grid;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.custom-get-receipt-text {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #103783;
+}
+
+.custom-get-receipt-icon {
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
 .custom-button-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    margin-top: 10px !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .custom-service-btn {
-    width: 200px !important;
-    height: 130px !important;
-    margin: 5px !important;
-    background-color: orange !important;
-    color: white !important;
-    font-size: 24px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 20px !important;
+    width: 200px;
+    height: 130px;
+    margin: 5px;
+    background-color: orange;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
 }
 
 .custom-service-btn:hover {
-    border-color: #103783 !important;
-    font-size: 24px !important;
-    color: #103783 !important;
-    font-weight: bold !important;
+    border-color: #103783;
+    font-size: 24px;
+    color: #103783;
+    font-weight: bold;
+    background-color: orange;
 }
 
 .custom-help-box { 
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 50px !important;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
      
 }
 
 .custom-help-btn {
-    color: white !important;
-    background-color: #103783 !important;
-    align-items: center !important;
-    justify-content: center !important;
+    color: white;
+    background-color: #103783;
+    align-items: center;
+    justify-content: center;
 }
 
 .custom-help-btn:hover {
-    background-color: white !important;
-    color: #103783 !important;
-    border-color: #103783 !important;
+    background-color: white;
+    color: #103783;
+    border-color: #103783;
 }
