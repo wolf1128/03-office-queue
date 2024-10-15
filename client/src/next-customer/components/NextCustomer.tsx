@@ -29,7 +29,7 @@ export default function NextCustomer(props: Props) {
   useEffect(() => {
     setServiceName(myService?.ServiceName);
     console.log("Service Name: ", serviceName);
-  }, [myService, serviceName]);
+  }, [myService]);
 
   return (
     <Container className="counter-display text-center">
