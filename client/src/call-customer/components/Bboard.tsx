@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import '../call-customer.css';
-import Clock from './clock.tsx';
+import Clock from './Cclock.tsx';
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { TbHourglassEmpty } from "react-icons/tb";
