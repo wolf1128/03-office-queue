@@ -2,6 +2,7 @@ import { test, expect, jest, describe } from "@jest/globals";
 import TicketController from "../../src/controllers/ticketController";
 import TicketDAO from "../../src/dao/ticketDAO";
 import Service from "../../src/components/service";
+import { count } from "console";
 
 jest.mock("../../src/db/db.ts");
 jest.mock("../../src/dao/ticketDAO.ts");
@@ -17,6 +18,7 @@ describe("Ticket Controller Unit Tests", () => {
         issuedTime: "2024-10-12",
         estimatedTime: 0,
         status: "in queue",
+        counterID: 1,
       };
       jest
         .spyOn(TicketDAO.prototype, "getTicket")

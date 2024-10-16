@@ -10,7 +10,7 @@ const baseURL = "/api";
 // For unit tests, we need to validate the internal logic of a single component, without the need to test the interaction with other components
 jest.mock("../../src/controllers/ticketController");
 
-let testTicket = new Ticket(1, 1, "", 10, "completed");
+let testTicket = new Ticket(1, 1, "", 10, "completed", 1);
 let testService = new Service(1, "Shipping", 10);
 
 describe("TicketRoute unit tests", () => {

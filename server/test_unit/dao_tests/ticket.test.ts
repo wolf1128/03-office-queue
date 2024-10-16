@@ -4,14 +4,12 @@ import db from "../../src/db/db";
 import { Database } from "sqlite3";
 import Service from "../../src/components/service";
 import Ticket from "../../src/components/ticket";
+import { TimeHandler } from "../../src/helper";
 
 jest.mock("../../src/db/db.ts");
 
-const date = new Date();
-const formattedDate = `${date.getFullYear()}-${String(
-  date.getMonth() + 1
-).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-let testNewTicket = new Ticket(1, 1, formattedDate, 0, "in queue");
+const formattedDate = new TimeHandler().getCurrentTime();
+let testNewTicket = new Ticket(1, 1, formattedDate, 0, "in queue", null);
 let testService = new Service(1, "Shipping", 10);
 
 describe("TicketDAO unit tests", () => {
