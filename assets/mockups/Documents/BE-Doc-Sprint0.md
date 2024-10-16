@@ -79,7 +79,7 @@ This API creates a new ticket for the specified service.
 - **500 Internal Server Error**: If there is an issue processing the request.
 
 ## Next Customer
-### 1. PATCH /api/next-customer
+### 1. PATCH /api/next-customer/:officerID
 
 ### Description:
 This API is used by the counter staff/officer to call the next customer based on the service types handled by their counter. It selects the next ticket based on the longest queue or, if queues are of the same length, based on the shortest service time.

@@ -13,7 +13,7 @@ The frontend of Office Queue Management is built using React, a popular JavaScri
 
 - `board` (in `board.tsx`): The component creates a visual dashboard for customers, displaying their ticket number and the status of service queues.
 
-- `clock` (in `board.tsx`): The component is a real-time clock that updates every second and shows the current time in a 24-hour format.
+- `clock` (in `clock.tsx`): The component is a real-time clock that updates every second and shows the current time in a 24-hour format.
 
 ## Styling
 This section describes the visual design of the frontend, including the layout, color scheme, typography, and other design elements.
