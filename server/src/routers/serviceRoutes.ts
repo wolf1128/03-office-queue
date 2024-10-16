@@ -1,17 +1,12 @@
 import express, { Router } from "express";
 import ServiceController from "../controllers/serviceController";
-import { body, param } from "express-validator"
-import ErrorHandler from "../helper";
-import Service from "../components/service";
 
 /*
  * Represents a class that defines the routes for handling proposals.
  */
 class ServiceRoutes {
   private router: Router;
-  private errorHandler: ErrorHandler;
   private controller: ServiceController;
-
 
   /*
    * Constructs a new instance of the ProductRoutes class.
@@ -19,7 +14,6 @@ class ServiceRoutes {
   constructor() {
     this.router = express.Router();
 
-    this.errorHandler = new ErrorHandler();
     this.controller = new ServiceController();
     this.initRoutes();
   }

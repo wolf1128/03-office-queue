@@ -1,11 +1,12 @@
 import express, { Router } from "express";
 import TicketController from "../controllers/ticketController";
-import { body, param } from "express-validator"
-import ErrorHandler from "../helper";
+import { body, param } from "express-validator";
+import { ErrorHandler } from "../helper";
 import Ticket from "../components/ticket";
+import { Notification } from "../types/queue";
 
 /*
- * Represents a class that defines the routes for handling users.
+ * Represents a class that defines the routes for handling tickets.
  */
 class TicketRoutes {
   private router: Router;
@@ -32,11 +33,8 @@ class TicketRoutes {
   }
 
   /*
-   * Initializes the routes for the user router.
+   * Initializes the routes for the ticket router.
    *
-   * @remarks
-   * This method sets up the HTTP routes for creating, retrieving, updating, and deleting user data.
-   * It can (and should!) apply authentication, authorization, and validation middlewares to protect the routes.
    */
   initRoutes() {
     /**
@@ -64,6 +62,21 @@ class TicketRoutes {
         this.controller
           .nextCustomer(req.params.officerID)
           .then((ticket: Ticket) => res.status(200).json(ticket))
+          .catch((err) => {
+            next(err);
+          })
+    );
+
+    this.router.get(
+      "/:ticketID/notifications",
+      param("ticketID").notEmpty().isInt({ min: 1 }),
+      this.errorHandler.validateRequest,
+      (req: any, res: any, next: any) =>
+        this.controller
+          .getNotifications(req.params.ticketID)
+          .then((notification: Notification) =>
+            res.status(200).json(notification)
+          )
           .catch((err) => {
             next(err);
           })
