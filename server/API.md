@@ -108,7 +108,8 @@ This API is used by the counter staff/officer to call the next customer based on
     "serviceID": 42, 
     "issuedTime": "2024-10-10T10:00:00Z", 
     "estimatedTime": 15,
-    "status": "in progress"}
+    "status": "in progress",
+    "counterID": 1}
 ]
 ```
 
