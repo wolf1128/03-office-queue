@@ -67,13 +67,19 @@ class TicketRoutes {
           })
     );
 
-    this.router.get("/:ticketID/notifications", (req: any, res: any, next: any) =>
-      this.controller
-        .getNotifications(req.params.ticketID)
-        .then((notification: Notification) => res.status(200).json(notification))
-        .catch((err) => {
-          next(err);
-        })
+    this.router.get(
+      "/:ticketID/notifications",
+      param("ticketID").notEmpty().isInt({ min: 1 }),
+      this.errorHandler.validateRequest,
+      (req: any, res: any, next: any) =>
+        this.controller
+          .getNotifications(req.params.ticketID)
+          .then((notification: Notification) =>
+            res.status(200).json(notification)
+          )
+          .catch((err) => {
+            next(err);
+          })
     );
   }
 }
