@@ -25,7 +25,7 @@ class TicketDAO {
                 const day = String(date.getDate()).padStart(2, '0');
                 const formattedDate = `${year}-${month}-${day}`;
 
-                let newTicket: Ticket = new Ticket(1, service, formattedDate, 0, "in queue")
+                let newTicket: Ticket = new Ticket(1, service, formattedDate, 0, "in queue", 0)
 
                 db.get(ticketID_query, (err: Error | null, row: any) => {
                     if (err) return reject(err);
@@ -67,15 +67,15 @@ class TicketDAO {
                     "ORDER BY QueueLength DESC, ServiceTime ASC, TicketID ASC " +
                     "LIMIT 1;"
 
-                const updateStatusSql = "UPDATE Ticket SET Status = 'in progress' WHERE TicketID = ?";
+                const updateStatusSql = "UPDATE Ticket SET Status = 'in progress', Counter = ? WHERE TicketID = ?";
 
                 db.get(getTicketSql, [officerID], (err: Error | null, row: any) => {
                     if (err) return reject(err);
                     if (!row) return resolve(null);
 
-                    const returnedTicket = new Ticket(row.TicketID, row.ServiceID, row.IssuedTime, row.EstimatedTime, "in progress");
+                    const returnedTicket = new Ticket(row.TicketID, row.ServiceID, row.IssuedTime, row.EstimatedTime, "in progress", officerID);
 
-                    db.run(updateStatusSql, [returnedTicket.ticketID], (err: Error | null) => {
+                    db.run(updateStatusSql, [officerID, returnedTicket.ticketID], (err: Error | null) => {
                         if (err) return reject(err);
                         return resolve(returnedTicket);
                     });
