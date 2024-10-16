@@ -7,5 +7,8 @@ export interface Queue {
 
 export interface Notification {
   myTicket: Ticket;
-  queues: Queue[];
+  displayBoard: {
+    nextTicket: Ticket;
+    queues: Queue[];
+  };
 }

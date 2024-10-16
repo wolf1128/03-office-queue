@@ -124,6 +124,7 @@ This API is used by the counter staff/officer to call the next customer based on
 ### Description:
 
 This API is used by the customer to be notified about status of their ticket.
+Also, provide the data for the display board.
 
 ### Request:
 
@@ -145,14 +146,24 @@ This API is used by the customer to be notified about status of their ticket.
     "counterID": 1,
     "issuedTime": "2024-10-10T10:00:00Z",
     "estimatedTime": 15,
-    "status": "in progress"
+    "status": "in queue"
   },
-  "queues": [
-    {
-      "name": "queue-1",
-      "length": 0
-    }
-  ]
+  "displayBoard": {
+    "nextTicket": {
+      "ticketID": 9876,
+      "serviceID": 42,
+      "counterID": 2,
+      "issuedTime": "2024-10-10T10:00:00Z",
+      "estimatedTime": 15,
+      "status": "in progress"
+    },
+    "queues": [
+      {
+        "name": "queue-1",
+        "length": 0
+      }
+    ]
+  }
 }
 ```
 

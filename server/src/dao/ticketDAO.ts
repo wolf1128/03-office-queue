@@ -2,8 +2,15 @@ import db from "../db/db";
 import Ticket from "../components/ticket";
 import { Queue } from "../types/queue";
 import { TicketNotFoundError } from "../errors/ticketError";
+import { TimeHandler } from "../helper";
 
 class TicketDAO {
+  private timeHandler: TimeHandler;
+
+  constructor() {
+    this.timeHandler = new TimeHandler();
+  }
+
   /*
         Returns the newly generated ticket.
         -DB errors
@@ -21,16 +28,12 @@ class TicketDAO {
         const insertQueue_query =
           "INSERT INTO Ticket VALUES(?,?,?,null,'in queue', null)";
 
-        const date = new Date();
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-        const formattedDate = `${year}-${month}-${day}`;
+        const formattedDateTime = this.timeHandler.getCurrentTime();
 
         let newTicket: Ticket = new Ticket(
           1,
           service,
-          formattedDate,
+          formattedDateTime,
           0,
           "in queue",
           null
@@ -43,6 +46,7 @@ class TicketDAO {
             insertQueue_query,
             [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime],
             (err: Error | null) => {
+              console.log(err);
               if (err) return reject(err);
               return resolve(newTicket);
             }
@@ -74,10 +78,10 @@ class TicketDAO {
           "SELECT TicketID, ServiceID, IssuedTime, EstimatedTime " +
           "FROM NextTicket " +
           "ORDER BY QueueLength DESC, ServiceTime ASC, TicketID ASC " +
-          "LIMIT 1;"; // TODO: xxx this query is vulnerable to SQL injection (to be reviewed)
+          "LIMIT 1;";
 
         const updateStatusSql =
-          "UPDATE Ticket SET Status = 'in progress', CounterID = ? WHERE TicketID = ?"; // TODO: xxx this query is vulnerable to SQL injection (to be reviewed)
+          "UPDATE Ticket SET Status = 'in progress', CounterID = ? WHERE TicketID = ?";
 
         db.get(getTicketSql, [officerID], (err: Error | null, row: any) => {
           if (err) return reject(err);
@@ -141,6 +145,32 @@ class TicketDAO {
                     WHERE TicketID = ?;
                 `;
         db.get(sql, [ticketID], (err: Error | null, ticket: Ticket) => {
+          if (err) {
+            reject(err);
+          }
+          if (!ticket) {
+            reject(new TicketNotFoundError());
+            return;
+          }
+          resolve(ticket);
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  getNextTicket(): Promise<Ticket> {
+    return new Promise<Ticket>((resolve, reject) => {
+      try {
+        const sql = `
+                  SELECT *
+                  FROM Ticket
+                  WHERE Status = "in progress"
+                  ORDER BY IssuedTime DESC
+                  LIMIT 1;
+                `;
+        db.get(sql, [], (err: Error | null, ticket: Ticket) => {
           if (err) {
             reject(err);
           }

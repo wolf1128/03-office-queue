@@ -22,11 +22,15 @@ class TicketController {
     return new Promise<Notification>(async (resolve, reject) => {
       try {
         const myTicket = await this.ticketDAO.getMyTicket(ticketID);
+        const nextTicket = await this.ticketDAO.getNextTicket();
         const queues = await this.ticketDAO.getQueues();
 
         const notification = {
           myTicket,
-          queues,
+          displayBoard: {
+            nextTicket,
+            queues,
+          },
         };
 
         resolve(notification);

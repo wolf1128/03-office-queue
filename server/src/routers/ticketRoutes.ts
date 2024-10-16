@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import TicketController from "../controllers/ticketController";
 import { body, param } from "express-validator";
-import ErrorHandler from "../helper";
+import { ErrorHandler } from "../helper";
 import Ticket from "../components/ticket";
 import { Notification } from "../types/queue";
 
