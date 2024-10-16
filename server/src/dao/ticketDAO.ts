@@ -46,7 +46,6 @@ class TicketDAO {
             insertQueue_query,
             [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime],
             (err: Error | null) => {
-              console.log(err);
               if (err) return reject(err);
               return resolve(newTicket);
             }
@@ -175,8 +174,7 @@ class TicketDAO {
             reject(err);
           }
           if (!ticket) {
-            reject(new TicketNotFoundError());
-            return;
+            resolve(null);
           }
           resolve(ticket);
         });
