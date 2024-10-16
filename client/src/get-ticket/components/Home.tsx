@@ -10,7 +10,7 @@ function Home(props: Props) {
     API.createTicket(serviceID).then((ticket: Ticket) => {
       props.setTicket(ticket);
       // Navigate to the ticket page using the ticketID
-      if (ticket && ticket.ticketID) {
+      if (props.ticket && props.ticket.ticketID) {
         navigate(`/ticket/${props.ticket.ticketID}`);
       }
     });

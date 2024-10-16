@@ -1,15 +1,14 @@
-
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import API from "./API/API.ts";
-import Home from "./get-ticket/components/home.tsx";
-import Ticket from "./get-ticket/components/ticket.tsx";
+import Home from "./get-ticket/components/Home.tsx";
+import Ticket from "./get-ticket/components/Ticket.tsx";
 import CustomNavbar from "./shared-components/Navbar.tsx";
 import { Service, Ticket as TicketType } from "./interfaces/types.ts";
 import NextCustomer from "./next-customer/components/NextCustomer.tsx";
-import DisplayBoard from "./call-customer/components/board.tsx";
+import DisplayBoard from "./call-customer/components/Board.tsx";
 
 function DefaultRoute() {
   return (
@@ -27,8 +26,9 @@ function App() {
     ticketID: 1,
     serviceID: 1,
     issuedTime: "",
-    estimatedTime: "",
+    estimatedTime: 0,
     status: "",
+    counterID: 0
   });
 
   // get all the services
@@ -57,7 +57,7 @@ function App() {
         />
         <Route
           path="/displayboard"
-          element={<DisplayBoard />}
+          element={<DisplayBoard services={services} ticket={ticket} setTicket={setTicket} />}
         />
       </Routes>
     </Container>
