@@ -25,9 +25,9 @@ const postService = async () => {
       [service.ServiceName, service.ServiceTime],
       (err: Error | null) => {
         if (err) {
-          console.error("Error inserting record:", err); // For debug purposes.
+          console.error("Error inserting record:", err); // For debugging purposes.
         } else {
-          // console.log("Record inserted successfully"); // For debug purposes.
+          // console.log("Record inserted successfully"); // For debugging purposes.
         }
       }
     );
@@ -63,6 +63,36 @@ describe("Service routes integration tests", () => {
 
     test("It should return 422 if the ServiceID is not provided", async () => {
       await request(app).post(`${routePath}/tickets`).send({}).expect(422);
+    });
+  });
+
+  describe("GET /:ticketID/notifications", () => {
+    test("It should return 200 with an instance of notification", async () => {
+      // Firstly, create a ticket
+      const res0 = await request(app).get(`${routePath}/services`).expect(200);
+      const services = res0.body;
+      const selectedServiceID = services[0].ServiceID;
+
+      const newTicket: any = await request(app)
+        .post(`${routePath}/tickets`)
+        .send({ ServiceID: selectedServiceID })
+        .expect(201);
+
+      const notification = await request(app)
+        .get(`${routePath}/tickets/${newTicket.body.ticketID}/notifications`)
+        .expect(200);
+
+      expect(notification.body).toBeDefined();
+      expect(notification.body.myTicket).toBeDefined();
+      expect(notification.body.displayBoard).toBeDefined();
+
+      // expect(res1.body.status).toBe("in queue");
+    });
+
+    test("It should return 422 if the TicketID is not valid", async () => {
+      await request(app)
+        .get(`${routePath}/tickets/test/notifications`)
+        .expect(422);
     });
   });
 });

@@ -46,7 +46,6 @@ class TicketDAO {
             insertQueue_query,
             [newTicket.ticketID, newTicket.serviceID, newTicket.issuedTime],
             (err: Error | null) => {
-              console.log(err);
               if (err) return reject(err);
               return resolve(newTicket);
             }
@@ -144,14 +143,23 @@ class TicketDAO {
                     FROM Ticket
                     WHERE TicketID = ?;
                 `;
-        db.get(sql, [ticketID], (err: Error | null, ticket: Ticket) => {
+        db.get(sql, [ticketID], (err: Error | null, row: any) => {
           if (err) {
             reject(err);
           }
-          if (!ticket) {
+          if (!row) {
             reject(new TicketNotFoundError());
             return;
           }
+          const ticket = new Ticket(
+            row.TicketID,
+            row.ServiceID,
+            row.IssuedTime,
+            row.EstimatedTime,
+            row.Status,
+            row.CounterID
+          );
+
           resolve(ticket);
         });
       } catch (error) {
@@ -170,14 +178,22 @@ class TicketDAO {
                   ORDER BY IssuedTime DESC
                   LIMIT 1;
                 `;
-        db.get(sql, [], (err: Error | null, ticket: Ticket) => {
+        db.get(sql, [], (err: Error | null, row: any) => {
           if (err) {
             reject(err);
           }
-          if (!ticket) {
-            reject(new TicketNotFoundError());
-            return;
+          if (!row) {
+            resolve(null);
           }
+          const ticket = new Ticket(
+            row.TicketID,
+            row.ServiceID,
+            row.IssuedTime,
+            row.EstimatedTime,
+            row.Status,
+            row.CounterID
+          );
+
           resolve(ticket);
         });
       } catch (error) {

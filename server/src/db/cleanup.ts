@@ -11,11 +11,14 @@ import db from "../db/db";
 export function cleanup() {
   return new Promise<void>((resolve, reject) => {
     db.serialize(() => {
-      db.run("DELETE FROM Ticket", (err) => {
+      db.run("DELETE FROM Officer", (err) => {
         if (err) return reject(err);
-        db.run("DELETE FROM Service", (err) => {
+        db.run("DELETE FROM Ticket", (err) => {
           if (err) return reject(err);
-          resolve();
+          db.run("DELETE FROM Service", (err) => {
+            if (err) return reject(err);
+            resolve();
+          });
         });
       });
     });
