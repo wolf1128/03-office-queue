@@ -52,11 +52,14 @@ Regarding the Agile approach for the first sprint after the technology discussio
 
 * Call customer
 
-The tasks are assigned to each feature by clarifying the stories and requirements according to the primary system design and database scheme
+The tasks are assigned to each feature by clarifying the stories and requirements according to the primary system design, context diagram database scheme
 
 # System design
 
 ![GeneralSystemIdea](/assets/mockups/GeneralSystemIdea.jpg)
+
+# Context diagram
+![ContextDiagram](/assets/mockups/ContextDiagram.jpg)
 
 # Database Structure
 
