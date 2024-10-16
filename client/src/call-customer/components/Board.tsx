@@ -58,25 +58,6 @@ function DisplayBoard(props: Props) {
         };
     }, []); // Empty dependency array to run once on mount
 
-    /*
-    useEffect(() => {
-        // WebSocket connection
-        const socket = new WebSocket('ws://localhost:3001'); // Adjust URL as needed
-
-        // Event listener for receiving messages
-        socket.onmessage = (event) => {
-            const notifications: NotificationsResponse = JSON.parse(event.data);
-            setNotifications(notifications);
-        };
-
-        // Cleanup WebSocket on unmount
-        return () => {
-            socket.close();
-        };
-    }, []); // Empty dependency array to run once on mount
-    
-    */
-
     return (
         <>
             <div className='full-page'>

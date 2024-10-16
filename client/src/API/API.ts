@@ -54,7 +54,6 @@ async function getNotifications(ticketID: number): Promise<NotificationsResponse
     const response = await fetch(baseURL + 'tickets/' + ticketID + '/notifications/');
     const notifications: NotificationsResponse = await response.json();
     if(response.ok){
-      console.log(notifications)
       return notifications
     } else {
       throw new Error("Failed to fetch notifications: " + response.statusText);
