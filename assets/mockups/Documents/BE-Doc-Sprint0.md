@@ -109,10 +109,53 @@ This API is used by the counter staff/officer to call the next customer based on
     "status": "in progress"}
 }
 ```
-### Purpose:
-* This API is used by counter staff or officers to call the next customer in the queue. It identifies the next customer based on the service types handled by the officer’s counter. The selection logic prioritizes:
- * The service type with the longest queue.
-* If two or more queues have the same number of customers, it selects the customer with the shortest estimated service time.
+
+### Error Responses:
+- **404 Not Found:** If the parameter officerID is missing.
+- **422 Unprocessable Entity:** If the parameter officerID less than or equal to 0, or is not an integer.
+- **503 Internal Server Error:** If there is an issue processing the request.
+
+## Call Customer
+### 1. GET /api/tickets/:ticketID/notifications
+
+### Description:
+This API is used by the customer to be notified about status of their ticket. Also, provide the data for the display board.
+
+### Request:
+- **Method**: `GET`
+- **URL**: `/api/tickets/:ticketID/notifications`
+- **Body Parameters**:
+    - **ticketID** (number): an integer number greater than 0, representing the ID of the Ticket that customer have.
+
+#### Example Request:
+```json
+{
+  "myTicket": {
+    "ticketID": 9876,
+    "serviceID": 42,
+    "counterID": 1,
+    "issuedTime": "2024-10-10T10:00:00Z",
+    "estimatedTime": 15,
+    "status": "in queue"
+  },
+  "displayBoard": {
+    "nextTicket": {
+      "ticketID": 9876,
+      "serviceID": 42,
+      "counterID": 2,
+      "issuedTime": "2024-10-10T10:00:00Z",
+      "estimatedTime": 15,
+      "status": "in progress"
+    },
+    "queues": [
+      {
+        "name": "queue-1",
+        "length": 0
+      }
+    ]
+  }
+}
+```
 
 ### Error Responses:
 - **404 Not Found:** If the parameter officerID is missing.
