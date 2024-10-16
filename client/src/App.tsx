@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import API from "./API/API.ts";
-import Home from "./get-ticket/components/Hhome.tsx";
-import Ticket from "./get-ticket/components/Tticket.tsx";
+import Home from "./get-ticket/components/home.tsx";
+import Ticket from "./get-ticket/components/Ticket.tsx";
 import CustomNavbar from "./shared-components/navbar.tsx";
 import { Service, Ticket as TicketType } from "./interfaces/types.ts";
 import NextCustomer from "./next-customer/components/NextCustomer.tsx";
-import DisplayBoard from "./call-customer/components/Bboard.tsx";
+import DisplayBoard from "./call-customer/components/board.tsx";
 
 function DefaultRoute() {
   return (
