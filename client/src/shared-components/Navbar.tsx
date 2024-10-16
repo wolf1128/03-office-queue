@@ -33,7 +33,7 @@ function CustomNavbar() {
       <Container fluid className="custom-navbar-container">
         {/* Left: Back Button */}
         <div className="custom-navbar-buttons">
-          {location.pathname === "/" ? (
+          {location.pathname.includes("/ticket/") ? (
             <Button className="custom-btn-outline" onClick={goToDisplayBoard}>
               Display Board
             </Button>

@@ -9,8 +9,9 @@ export interface Service {
     ticketID: number;
     serviceID: number;
     issuedTime: string;
-    estimatedTime: string;
+    estimatedTime: number;
     status: string;
+    counterID: number;
   }
   
   // Define the Props interface
@@ -19,21 +20,16 @@ export interface Service {
     ticket: Ticket;
     setTicket: React.Dispatch<React.SetStateAction<Ticket>>;
   }
-  
 
-  export interface TicketData {
-    TicketID: number;
-    CounterID: number;
-    CounterLabel: string;
-  }
-
-  export interface WaitingQueueItem {
-      ServiceID: number;
-      ServiceName: string;
-      noOfPeople: number;
+  export interface Queue {
+    ServiceName: string;
+    length: number;
   }
 
   export interface NotificationsResponse {
-      data: TicketData;
-      waitingQueue: WaitingQueueItem[];
+    myTicket: Ticket;
+    displayBoard: {
+      nextTicket: Ticket;
+      queues: Queue[];
+    };
   }

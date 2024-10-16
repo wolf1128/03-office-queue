@@ -1,49 +1,46 @@
 import { useState, useEffect } from 'react'
 import '../call-customer.css';
-import Clock from './clock.tsx';
+import Clock from './Clock.tsx';
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { TbHourglassEmpty } from "react-icons/tb";
-import { Service, Props, NotificationsResponse } from '../../interfaces/types.ts';
+import { Props, NotificationsResponse } from '../../interfaces/types.ts';
 import API from '../../API/API.ts';
 
-function DisplayBoard() {
+function DisplayBoard(props: Props) {
 
     const [notifications, setNotifications] = useState<NotificationsResponse>(
         {
-            "data": {          
-                "TicketID": 0,
-                "CounterID": 0,
-                "CounterLabel": ""
+            myTicket: {
+              ticketID: 1,
+              serviceID: 1,
+              counterID: 1,
+              issuedTime: "",
+              estimatedTime: 0,
+              status: ""
             },
-            "waitingQueue": [
-                {   
-                "ServiceID": 0,
-                "ServiceName": "",
-                "noOfPeople": 0
-                },
+            displayBoard: {
+              nextTicket: {
+                ticketID: 1,
+                serviceID: 1,
+                counterID: 1,
+                issuedTime: "",
+                estimatedTime: 0,
+                status: ""
+              },
+              queues: [
                 {
-                "ServiceID": 0,
-                "ServiceName": "",           
-                "noOfPeople": 0
-                },
-                {
-                "ServiceID": 0,
-                "ServiceName": "",           
-                "noOfPeople": 0
-                },
-                {
-                "ServiceID": 0,
-                "ServiceName": "",           
-                "noOfPeople": 0
-                }     
-            ]
-           }
+                  ServiceName: "",
+                  length: 0
+                }
+              ]
+            }
+          }
     );
 
     // Function to fetch notifications
     const fetchNotifications = () => {
-        API.getNotifications()
+        API.getNotifications(props.ticket.ticketID)
             .then((notifications: NotificationsResponse) => {
                 setNotifications(notifications);
             });
@@ -92,7 +89,7 @@ function DisplayBoard() {
                         </span>
                         <br/>
                         <span className='board-ticket-number'>
-                            {notifications ? notifications.data.TicketID : "Loading..."}
+                            {notifications ? notifications.displayBoard.nextTicket.ticketID : "Loading..."}
                         </span>
                         <br/>
                         <span className='board-ticket-subtext'>
@@ -100,7 +97,7 @@ function DisplayBoard() {
                         </span>
                         <br/>
                         <span className='board-ticket-counter'>
-                            {notifications ? notifications.data.CounterLabel : "Loading..."}
+                            {notifications ? notifications.displayBoard.nextTicket.counterID : "Loading..."}
                         </span>                
                     </div>
                 </div>
@@ -112,13 +109,13 @@ function DisplayBoard() {
                         </span>
                     </div>
                     <div className='queue-box'>
-                        {notifications?.waitingQueue.map((item) => (
-                            <div key={item.ServiceID} className='service-queue'>
-                                <span className='service-queue-lentgh'>{item.noOfPeople}</span>
+                        {notifications?.displayBoard.queues.map((item, index) => (
+                            <div key={index} className='service-queue'>
+                                <span className='service-queue-lentgh'>{item.length}</span>
                                 <span className='service-queue-icon'>
-                                    {item.noOfPeople === 0 ? (
+                                    {item.length === 0 ? (
                                         <TbHourglassEmpty />
-                                    ) : item.noOfPeople === 1 ? (
+                                    ) : item.length === 1 ? (
                                         <BsFillPersonFill />
                                     ) : (
                                         <BsFillPeopleFill />
