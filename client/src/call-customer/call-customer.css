@@ -37,7 +37,7 @@
 }
 
 /* Ticket Number Box */
-.ticket-box {
+.ticket-box-orange {
     border: 2px solid orange;
     background-color: orange;
     padding-top: 20px;
@@ -46,25 +46,29 @@
     padding-right: 35px;
     border-radius: 20px;
     margin: 20px auto; 
-    width: 350px;
+    width: 450px;
+    height: 450px;
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 /* Ticket Text */
-.ticket-text {
+.board-ticket-text {
     text-align: center;
     font-weight: bold;
     color: #2b2b2b;
     font-size: 44px;  
 }
 
-.ticket-subtext{
+.board-ticket-subtext{
     text-align: center;
     color: #2b2b2b;
     font-size: 24px;  
 }
 
 /* Ticket Number */
-.ticket-number {
+.board-ticket-number {
     text-align: center;
     color: white;
     font-weight: bold;
@@ -72,7 +76,7 @@
     
 }
 
-.ticket-counter {
+.board-ticket-counter {
     text-align: center;
     font-weight: bold;
     color: #103783;
@@ -103,7 +107,7 @@
 
 .service-queue {
     width: 500px;
-    height: 80px;
+    height: 90px;
     margin: 5px;
     border: 3px solid orange;
     display: flex;

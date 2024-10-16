@@ -86,20 +86,20 @@ function DisplayBoard() {
                 <div className='column'>    
                     <Clock />     
                     {/* Ticket Number Box */}
-                    <div className='ticket-box'>
-                        <span className='ticket-text'>
+                    <div className='ticket-box-orange'>
+                        <span className='board-ticket-text'>
                             Ticket No
                         </span>
                         <br/>
-                        <span className='ticket-number'>
+                        <span className='board-ticket-number'>
                             {notifications ? notifications.data.TicketID : "Loading..."}
                         </span>
                         <br/>
-                        <span className='ticket-subtext'>
+                        <span className='board-ticket-subtext'>
                             please proceed to
                         </span>
                         <br/>
-                        <span className='ticket-counter'>
+                        <span className='board-ticket-counter'>
                             {notifications ? notifications.data.CounterLabel : "Loading..."}
                         </span>                
                     </div>
