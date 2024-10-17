@@ -6,7 +6,7 @@ class Ticket {
     status: string
     counterID: number
 
-    constructor(TicketID: number, ServiceID: number, IssuedTime: string, EstimatedTime: number, Status: string, CounterID: number) {
+    constructor(TicketID: number, ServiceID: number, IssuedTime: string, EstimatedTime: number, Status: string, CounterID: number | null) {
         this.ticketID = TicketID;
         this.serviceID = ServiceID;
         this.issuedTime = IssuedTime;

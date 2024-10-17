@@ -178,7 +178,7 @@ class TicketDAO {
                   ORDER BY IssuedTime DESC
                   LIMIT 1;
                 `;
-        db.get(sql, [], (err: Error | null, row: any) => {
+        db.get(sql, [], (err: Error | null, row: any) => {console.log("row: ", row)
           if (err) {
             reject(err);
           }

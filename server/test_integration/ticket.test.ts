@@ -3,6 +3,7 @@ import request from "supertest";
 import { app } from "../index";
 import { cleanup } from "../src/db/cleanup";
 import db from "../src/db/db";
+import { TimeHandler } from "../src/helper";
 
 const routePath = "/api"; // Base route path for the API
 
@@ -33,15 +34,35 @@ const postService = async () => {
     );
   });
 };
+const postNextTicket = async () => {
+  const res0 = await request(app).get(`${routePath}/services`);
+  const services = res0.body;
+  const selectedServiceID = services[0].ServiceID;
+
+  const insert_query = `INSERT INTO Ticket (ServiceID, IssuedTime, EstimatedTime, Status, CounterID) VALUES (?, ?, ?, "in progress", null)`;
+
+  db.run(
+    insert_query,
+    [selectedServiceID, new TimeHandler().getCurrentTime(), 0],
+    (err: Error | null) => {
+      if (err) {
+        console.error("Error inserting record:", err); // For debugging purposes.
+      } else {
+        // console.log("Record inserted successfully"); // For debugging purposes.
+      }
+    }
+  );
+};
 
 beforeAll(async () => {
   await cleanup();
 
   await postService();
+  await postNextTicket();
 });
 
 afterAll(async () => {
-  await cleanup();
+  // await cleanup();
 });
 
 describe("Service routes integration tests", () => {
