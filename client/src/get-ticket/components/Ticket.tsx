@@ -35,10 +35,11 @@ function Ticket(props: Props) {
                 {/* Information Box */}
                 <div className="custom-information-box">
                     <div className="custom-padding"></div>
-                    <div className="custom-waiting-time">
+                    {/* TODO */}
+                    {/* <div className="custom-waiting-time">
                         Waiting Time
                         <div className="custom-waiting-time-number">{props.ticket.estimatedTime}</div>
-                    </div>
+                    </div> */}
                     <div className="custom-service-type">
                         Service Type
                         <div className="custom-service-type-number">
