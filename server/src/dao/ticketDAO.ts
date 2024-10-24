@@ -172,13 +172,14 @@ class TicketDAO {
     return new Promise<Ticket>((resolve, reject) => {
       try {
         const sql = `
-                  SELECT *
-                  FROM Ticket
-                  WHERE Status = "in progress"
-                  ORDER BY IssuedTime DESC
+                  SELECT T.TicketID, T.ServiceID, T.IssuedTime, T.Status, T.CounterID, S.ServiceTime
+                  FROM Ticket T, Service S
+				          JOIN Service ON T.ServiceID = S.ServiceID
+                  WHERE T.Status = "in progress"
+                  ORDER BY T.TicketID DESC, T.IssuedTime DESC, S.ServiceTime ASC
                   LIMIT 1;
                 `;
-        db.get(sql, [], (err: Error | null, row: any) => {console.log("row: ", row)
+        db.get(sql, [], (err: Error | null, row: any) => {
           if (err) {
             reject(err);
           }
